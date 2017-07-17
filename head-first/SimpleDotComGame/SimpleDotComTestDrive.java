@@ -3,14 +3,24 @@ public class SimpleDotComTestDrive {
     SimpleDotCom dot = new SimpleDotCom();
     int[] locations = {2, 3, 4};
     dot.setLocationCells(locations);
-    String userGuess = "2";
-    String result = dot.checkYourself(userGuess);
-    String testResult = "failed";
 
-    if (result.equals("hit")) {
-      testResult = "passed";
+    String missResult = dot.checkYourself("1");
+    String hitResult = dot.checkYourself("2");
+
+    boolean testsPassed = true;
+
+    if (missResult.equals("miss")) {
+      testsPassed = testsPassed && true;
     }
 
-    System.out.println(testResult);
+    if (hitResult.equals("hit")) {
+      testsPassed = testsPassed && true;
+    }
+
+    if (testsPassed == true) {
+      System.out.println("passed");
+    } else {
+      System.out.println("failed");
+    }
   }
 }

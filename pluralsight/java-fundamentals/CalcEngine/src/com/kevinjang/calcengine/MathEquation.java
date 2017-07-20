@@ -2,10 +2,18 @@ package com.kevinjang.calcengine;
 
 class MathEquation {
 
-    double leftVal;
-    double rightVal;
-    char opCode;
-    double result;
+    private double leftVal;
+    private double rightVal;
+    private char opCode;
+    private double result;
+
+    double getLeftVal() { return leftVal; }
+    void setLeftVal(double leftVal) { this.leftVal = leftVal; }
+    double getRightVal() { return rightVal; }
+    void setRightVal(double rightVal) { this.rightVal = rightVal; }
+    char getOpCode() { return opCode; }
+    void setOpCode(char opCode) { this.opCode = opCode; }
+    double getResult() { return result; }
 
     void execute() {
 

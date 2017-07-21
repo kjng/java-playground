@@ -34,10 +34,6 @@ public class Main {
 		
 		equationOverload.execute(leftInt, rightInt);
 		System.out.println(equationOverload.getResult());
-		
-		// MathEquation uses the double overload
-		equationOverload.execute((double) leftInt, rightInt);
-		System.out.println(equationOverload.getResult());
 	}
 
 }

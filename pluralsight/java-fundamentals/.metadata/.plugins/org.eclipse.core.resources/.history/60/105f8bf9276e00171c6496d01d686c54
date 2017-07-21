@@ -17,7 +17,7 @@ class MathEquation {
 
 	MathEquation() {}
 
-	MathEquation(char opCode) {
+	private MathEquation(char opCode) {
 		this.opCode = opCode;
 	}
 
@@ -53,13 +53,5 @@ class MathEquation {
 		
 		execute();
 	}
-	
-	void execute(int leftVal, int rightVal) {
-		this.leftVal = leftVal;
-		this.rightVal = rightVal;
-		
-		execute();
-		
-		result = (int) result;
-	}
+
 }

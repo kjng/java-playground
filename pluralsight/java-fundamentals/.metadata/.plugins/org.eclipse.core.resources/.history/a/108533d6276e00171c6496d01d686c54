@@ -17,7 +17,7 @@ class MathEquation {
 
 	MathEquation() {}
 
-	MathEquation(char opCode) {
+	private MathEquation(char opCode) {
 		this.opCode = opCode;
 	}
 
@@ -28,6 +28,7 @@ class MathEquation {
 	}
 
 	void execute() {
+
 		switch (opCode) {
 		case 'a':
 			result = leftVal + rightVal;
@@ -45,21 +46,7 @@ class MathEquation {
 			System.out.println("Unrecognized opCode");
 			result = 0.0d;
 		}
+
 	}
-		
-	void execute(double leftVal, double rightVal) {
-		this.leftVal = leftVal;
-		this.rightVal = rightVal;
-		
-		execute();
-	}
-	
-	void execute(int leftVal, int rightVal) {
-		this.leftVal = leftVal;
-		this.rightVal = rightVal;
-		
-		execute();
-		
-		result = (int) result;
-	}
+
 }

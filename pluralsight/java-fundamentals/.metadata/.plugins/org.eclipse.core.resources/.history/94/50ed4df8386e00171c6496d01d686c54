@@ -45,14 +45,6 @@ public class Main {
 			new Subtracter(225.0d, 17.0d),
 			new Multiplier(11.0d, 3.0d)
 		};
-		
-		System.out.println("\nCalculateBase Calculations");
-		
-		for (CalculateBase calculator : calculators) {
-			calculator.calculate();
-			
-			System.out.println(calculator.getResult());
-		}
 	}
 
 }

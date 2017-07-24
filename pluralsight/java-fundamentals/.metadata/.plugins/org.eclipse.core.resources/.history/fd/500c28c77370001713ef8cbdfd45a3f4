@@ -1,0 +1,10 @@
+package com.kevinjang.calcengine;
+
+public class CalculateHelper {
+	MathCommand command;
+	double leftValue;
+	double rightValue;
+	double result;
+	
+	
+}

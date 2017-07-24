@@ -21,7 +21,7 @@ public class Main {
 		
 		for (String statement : statements) {
 			helper.process(statement);
-			System.out.println(helper);
+			System.out.println(helper.toString());
 		}
 		
 		MathEquation[] equations = new MathEquation[4];

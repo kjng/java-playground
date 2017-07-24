@@ -47,7 +47,7 @@ public class MathEquation {
 		}
 	}
 		
-	public void execute(double leftVal, double rightVal) {
+	void execute(double leftVal, double rightVal) {
 		this.leftVal = leftVal;
 		this.rightVal = rightVal;
 		

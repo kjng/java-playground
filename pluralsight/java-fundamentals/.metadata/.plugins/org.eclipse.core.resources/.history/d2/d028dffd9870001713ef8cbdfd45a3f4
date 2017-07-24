@@ -12,7 +12,7 @@ public abstract class CalculateBase {
 	void setRightVal(double rightVal) { this.rightVal = rightVal; }
 	char getOpCode() { return opCode; }
 	void setOpCode(char opCode) { this.opCode = opCode; }
-	public double getResult() { return result; }
+	double getResult() { return result; }
 	void setResult(double result) { this.result = result; }
 	
 	CalculateBase() {}

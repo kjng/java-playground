@@ -15,13 +15,13 @@ public class MathEquation {
 	void setOpCode(char opCode) { this.opCode = opCode; }
 	public double getResult() { return result; }
 
-	public MathEquation() {}
+	MathEquation() {}
 
-	public MathEquation(char opCode) {
+	MathEquation(char opCode) {
 		this.opCode = opCode;
 	}
 
-	public MathEquation(char opCode, double leftVal, double rightVal) {
+	MathEquation(char opCode, double leftVal, double rightVal) {
 		this(opCode);
 		this.leftVal = leftVal;
 		this.rightVal = rightVal;
@@ -47,7 +47,7 @@ public class MathEquation {
 		}
 	}
 		
-	public void execute(double leftVal, double rightVal) {
+	void execute(double leftVal, double rightVal) {
 		this.leftVal = leftVal;
 		this.rightVal = rightVal;
 		

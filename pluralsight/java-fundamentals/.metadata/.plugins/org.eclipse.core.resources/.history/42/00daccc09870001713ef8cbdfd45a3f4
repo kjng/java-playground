@@ -13,11 +13,11 @@ public class MathEquation {
 	void setRightVal(double rightVal) { this.rightVal = rightVal; }
 	char getOpCode() { return opCode; }
 	void setOpCode(char opCode) { this.opCode = opCode; }
-	public double getResult() { return result; }
+	double getResult() { return result; }
 
-	public MathEquation() {}
+	MathEquation() {}
 
-	public MathEquation(char opCode) {
+	MathEquation(char opCode) {
 		this.opCode = opCode;
 	}
 
@@ -27,7 +27,7 @@ public class MathEquation {
 		this.rightVal = rightVal;
 	}
 
-	public void execute() {
+	void execute() {
 		switch (opCode) {
 		case 'a':
 			result = leftVal + rightVal;
@@ -47,7 +47,7 @@ public class MathEquation {
 		}
 	}
 		
-	public void execute(double leftVal, double rightVal) {
+	void execute(double leftVal, double rightVal) {
 		this.leftVal = leftVal;
 		this.rightVal = rightVal;
 		

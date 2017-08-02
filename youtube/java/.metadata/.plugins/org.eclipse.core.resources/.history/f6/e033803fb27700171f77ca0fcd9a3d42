@@ -22,11 +22,7 @@ public class Tuna {
 	}
 	
 	private void setSecond(int second) {
-		if (second >= 0 && second < 60) {
-			this.second = second;
-		} else {
-			this.second = 0;
-		}
+		this.second = second;
 	}
 	
 	public Tuna() {
@@ -49,6 +45,12 @@ public class Tuna {
 		setHour(hour);
 		setMinute(minute);
 		setSecond(second);
+		
+		if (second >= 0 && second < 60) {
+			setSecond(second);
+		} else {
+			setSecond(0);
+		}
 	}
 	
 	public String getMilitaryTime() {

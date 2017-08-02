@@ -1,0 +1,23 @@
+public class Apples {
+
+	public static void main(String[] args) {
+		
+		int result = average(134, 2, 13, 7, 42);
+		
+		System.out.println("Average: " + result);
+		
+	}
+	
+	public static int average(int ...numbers) {
+		
+		int total = 0;
+		
+		for (int num : numbers) {
+			total += num;
+		}
+		
+		return total / numbers.length;
+		
+	}
+
+}

@@ -142,3 +142,6 @@ Chain 2:
 
 !ENTRY com.ibm.datatools.core.http 1 0 2017-07-24 09:20:33.175
 !MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-07-24 17:19:22.055
+!MESSAGE Embedded HTTP server stopped

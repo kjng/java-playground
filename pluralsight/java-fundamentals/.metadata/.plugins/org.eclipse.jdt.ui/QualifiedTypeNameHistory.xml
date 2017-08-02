@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><qualifiedTypeNameHistroy/>
+<?xml version="1.0" encoding="UTF-8"?><qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.kevinjang.calcengine.CalculateHelper"/>
+<fullyQualifiedTypeName name="com.kevinjang.calcengine.MathEquation"/>
+<fullyQualifiedTypeName name="com.kevinjang.calcengine.CalculateBase"/>
+<fullyQualifiedTypeName name="com.kevinjang.calcengine.Divider"/>
+<fullyQualifiedTypeName name="com.kevinjang.calcengine.Adder"/>
+<fullyQualifiedTypeName name="com.kevinjang.calcengine.Subtracter"/>
+<fullyQualifiedTypeName name="com.kevinjang.calcengine.Multiplier"/>
+</qualifiedTypeNameHistroy>

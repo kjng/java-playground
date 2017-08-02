@@ -20,9 +20,9 @@ public class Tuna {
 	public String getTime() {
 		int formattedHour;
 		if (hour == 0 || hour == 12) {
-			formattedHour = 12;
+			hour = 12;
 		} else {
-			formattedHour = hour % 12;
+			hour = hour % 12;
 		}
 		
 		return String.format("%d:%02d:%02d %s", formattedHour, minute, second, (hour < 12 ? "AM" : "PM"));

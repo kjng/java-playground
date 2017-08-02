@@ -6,7 +6,7 @@ public class Apples {
 		
 		System.out.println(tunaObj.getMilitaryTime());
 		System.out.println(tunaObj.getTime());
-		tunaObj.setTime(12, 34, 11);
+		tunaObj.setTime(14, 34, 11);
 		System.out.println(tunaObj.getMilitaryTime());
 		System.out.println(tunaObj.getTime());
 		

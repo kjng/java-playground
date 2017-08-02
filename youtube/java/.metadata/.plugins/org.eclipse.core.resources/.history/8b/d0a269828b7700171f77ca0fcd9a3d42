@@ -1,0 +1,17 @@
+
+public class Apples {
+
+	public static void main(String[] args) {
+		
+		int kevin[] = {1, 2, 42, 134, 23};
+		int sum = 0;
+		
+		for (int i = 0; i < kevin.length; i++) {
+			sum += kevin[i];
+		}
+		
+		System.out.println("Sum is: " + sum);
+
+	}
+
+}

@@ -1,0 +1,14 @@
+
+public class Apples {
+
+	public static void main(String[] args) {
+		
+		int kevin[] = {1, 2, 42};
+		
+		for (int x : kevin) {
+			System.out.println(x);
+		}
+
+	}
+
+}

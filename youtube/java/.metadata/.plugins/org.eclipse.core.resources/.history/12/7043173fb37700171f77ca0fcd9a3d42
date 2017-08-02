@@ -10,8 +10,8 @@ public class Apples {
 		Tuna tunaArray[] = {tunaObj, tunaObj2, tunaObj3, tunaObj4};
 		
 		for (Tuna x : tunaArray) {
-			System.out.println(x.getMilitaryTime()); 
 			System.out.println(x.getTime());
+			System.out.println(x.getMilitaryTime());
 		}
 		
 	}

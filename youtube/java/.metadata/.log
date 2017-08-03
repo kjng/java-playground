@@ -74,3 +74,716 @@ org.eclipse.core.runtime.CoreException: Unable to retrieve system properties: "C
 
 !ENTRY com.ibm.datatools.core.http 1 0 2017-08-02 14:55:14.969
 !MESSAGE Embedded HTTP server stopped
+!SESSION 2017-08-03 08:49:28.896 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-03 08:49:40.826
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-03 08:49:43.470
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 4 4 2017-08-03 08:50:40.623
+!MESSAGE Cannot start embedded HTTP server.
+!STACK 0
+org.osgi.service.cm.ConfigurationException: org.eclipse.equinox.http.jetty.JettyConfigurator.dsdb : Address already in use: JVM_Bind
+	at org.eclipse.equinox.http.jetty.internal.HttpServerManager.updated(Unknown Source)
+	at org.eclipse.equinox.http.jetty.internal.Activator.startServer(Unknown Source)
+	at org.eclipse.equinox.http.jetty.JettyConfigurator.startServer(Unknown Source)
+	at com.ibm.datatools.core.http.server.JettyServerManager.start(Unknown Source)
+	at com.ibm.datatools.core.http.server.StartupManager.start(Unknown Source)
+	at com.ibm.datatools.core.http.server.StartupManager.earlyStartup(Unknown Source)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(Unknown Source)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.ui.internal.Workbench$56.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+Caused by: java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at javax.net.ssl.SSLServerSocket.<init>(Unknown Source)
+	at com.ibm.jsse2.aq.<init>(Unknown Source)
+	at com.ibm.jsse2.SSLServerSocketFactoryImpl.createServerSocket(Unknown Source)
+	at org.eclipse.jetty.util.ssl.SslContextFactory.newSslServerSocket(Unknown Source)
+	at org.eclipse.jetty.server.ssl.SslSocketConnector.newServerSocket(Unknown Source)
+	at org.eclipse.jetty.server.bio.SocketConnector.open(Unknown Source)
+	at org.eclipse.jetty.server.ssl.SslSocketConnector.open(Unknown Source)
+	at org.eclipse.jetty.server.AbstractConnector.doStart(Unknown Source)
+	at org.eclipse.jetty.server.bio.SocketConnector.doStart(Unknown Source)
+	at org.eclipse.jetty.server.ssl.SslSocketConnector.doStart(Unknown Source)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(Unknown Source)
+	at org.eclipse.jetty.server.Server.doStart(Unknown Source)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(Unknown Source)
+	... 11 more
+
+!ENTRY org.eclipse.core.resources 4 568 2017-08-03 08:55:32.208
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\sfk1j\Desktop\java_programs\youtube\java\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY org.eclipse.ui.ide 4 4 2017-08-03 09:18:46.029
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2017-08-03 09:18:46.030
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2017-08-03 09:18:46.030
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\sfk1j\Desktop\java_programs\youtube\java\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeFileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSave(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSave(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.Workspace.save(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(Unknown Source)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(Unknown Source)
+!SESSION 2017-08-03 09:18:53.452 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-03 09:19:01.492
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-03 09:19:02.897
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-03 09:19:15.083
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY org.eclipse.ui.ide 4 4 2017-08-03 11:30:37.990
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2017-08-03 11:30:37.991
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2017-08-03 11:30:37.991
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\sfk1j\Desktop\java_programs\youtube\java\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeFileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSave(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSave(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.Workspace.save(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(Unknown Source)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-03 11:30:38.465
+!MESSAGE Embedded HTTP server stopped
+!SESSION 2017-08-03 13:29:11.261 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-03 13:29:23.413
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-03 13:29:25.461
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-03 13:33:04.960
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY org.eclipse.core.resources 4 568 2017-08-03 13:33:18.419
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\sfk1j\Desktop\java_programs\youtube\java\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY org.eclipse.core.resources 4 568 2017-08-03 13:33:24.542
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\sfk1j\Desktop\java_programs\youtube\java\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY org.eclipse.core.resources 4 568 2017-08-03 13:41:26.341
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\sfk1j\Desktop\java_programs\youtube\java\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.SaveManager.save(Unknown Source)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:43:51.774
+!MESSAGE Several ports (8005, 8080, 8009) required by Tomcat v8.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
+
+!ENTRY org.eclipse.wst.server.core 4 0 2017-08-03 13:45:25.202
+!MESSAGE Server Tomcat v8.0 Server at localhost was unable to start within 45 seconds. If the server requires more time, try increasing the timeout in the server editor.
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-03 13:45:44.132
+!MESSAGE Embedded HTTP server stopped
+!SESSION 2017-08-03 13:49:31.129 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-03 13:49:41.459
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-03 13:49:43.652
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-03 13:50:00.245
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:53:46.922
+!MESSAGE Publishing the configuration...
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:53:46.922
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\catalina.policy: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\catalina.policy (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\catalina.policy (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:53:46.922
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\catalina.properties: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\catalina.properties (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\catalina.properties (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:53:46.923
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\context.xml: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\context.xml (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\context.xml (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:53:46.923
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\server.xml: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\server.xml (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\server.xml (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:53:46.923
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\tomcat-users.xml: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\tomcat-users.xml (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\tomcat-users.xml (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:53:46.923
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\web.xml: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\web.xml (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\web.xml (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:54:06.600
+!MESSAGE Publishing the configuration...
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:54:06.600
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\catalina.policy: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\catalina.policy (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\catalina.policy (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:54:06.600
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\catalina.properties: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\catalina.properties (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\catalina.properties (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:54:06.600
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\context.xml: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\context.xml (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\context.xml (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:54:06.600
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\server.xml: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\server.xml (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\server.xml (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:54:06.601
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\tomcat-users.xml: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\tomcat-users.xml (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\tomcat-users.xml (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-08-03 13:54:06.601
+!MESSAGE Error copying file to C:/Program Files/Apache Software Foundation/Tomcat 8.0/backup\web.xml: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\web.xml (The system cannot find the path specified.)
+!STACK 0
+java.io.FileNotFoundException: C:\Program Files\Apache Software Foundation\Tomcat 8.0\backup\web.xml (The system cannot find the path specified.)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.FileUtil.copyFile(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupFolder(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatConfiguration.backupAndPublish(Unknown Source)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Unknown Source)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY org.eclipse.jface 4 0 2017-08-03 13:59:24.319
+!MESSAGE Unhandled event loop exception during blocked modal context.
+!STACK 0
+org.eclipse.swt.SWTException: Failed to execute runnable (org.eclipse.swt.SWTException: Widget is disposed)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Unknown Source)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Unknown Source)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.block(Unknown Source)
+	at org.eclipse.jface.operation.ModalContext.run(Unknown Source)
+	at org.eclipse.jface.wizard.WizardDialog.run(Unknown Source)
+	at org.eclipse.wst.server.ui.internal.wizard.TaskWizard.performFinish(Unknown Source)
+	at org.eclipse.jface.wizard.WizardDialog.finishPressed(Unknown Source)
+	at org.eclipse.jface.wizard.WizardDialog.buttonPressed(Unknown Source)
+	at org.eclipse.jface.dialogs.Dialog$2.widgetSelected(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(Unknown Source)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Display.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Unknown Source)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source)
+	at org.eclipse.jface.window.Window.runEventLoop(Unknown Source)
+	at org.eclipse.jface.window.Window.open(Unknown Source)
+	at org.eclipse.wst.server.ui.internal.ServerUIPlugin.showNewRuntimeWizard(Unknown Source)
+	at org.eclipse.wst.server.ui.ServerUIUtil.showNewRuntimeWizard(Unknown Source)
+	at org.eclipse.wst.web.ui.internal.wizards.DataModelFacetCreationWizardPage.launchNewRuntimeWizard(Unknown Source)
+	at org.eclipse.wst.web.ui.internal.wizards.DataModelFacetCreationWizardPage.internalLaunchNewRuntimeWizard(Unknown Source)
+	at org.eclipse.wst.web.ui.internal.wizards.DataModelFacetCreationWizardPage$7.widgetSelected(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(Unknown Source)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Display.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Unknown Source)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source)
+	at org.eclipse.jface.window.Window.runEventLoop(Unknown Source)
+	at org.eclipse.jface.window.Window.open(Unknown Source)
+	at org.eclipse.ui.internal.handlers.WizardHandler$New.executeHandler(Unknown Source)
+	at org.eclipse.ui.internal.handlers.WizardHandler.execute(Unknown Source)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(Unknown Source)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(Unknown Source)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(Unknown Source)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(Unknown Source)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(Unknown Source)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(Unknown Source)
+	at org.eclipse.core.commands.Command.executeWithChecks(Unknown Source)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(Unknown Source)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(Unknown Source)
+	at org.eclipse.ui.internal.handlers.LegacyHandlerService.executeCommand(Unknown Source)
+	at org.eclipse.ui.internal.actions.CommandAction.runWithEvent(Unknown Source)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(Unknown Source)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(Unknown Source)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(Unknown Source)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Display.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Unknown Source)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(Unknown Source)
+	at org.eclipse.ui.internal.Workbench$5.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Unknown Source)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Unknown Source)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(Unknown Source)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(Unknown Source)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(Unknown Source)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(Unknown Source)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(Unknown Source)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.basicRun(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.run(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.main(Unknown Source)
+Caused by: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Unknown Source)
+	at org.eclipse.swt.widgets.Text.setText(Unknown Source)
+	at org.eclipse.jst.server.tomcat.ui.internal.TomcatRuntimeComposite.init(Unknown Source)
+	at org.eclipse.jst.server.tomcat.ui.internal.TomcatRuntimeComposite.setRuntime(Unknown Source)
+	at org.eclipse.jst.server.tomcat.ui.internal.TomcatRuntimeWizardFragment.enter(Unknown Source)
+	at org.eclipse.wst.server.ui.internal.wizard.TaskWizard$2$1.run(Unknown Source)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(Unknown Source)
+	at org.eclipse.ui.internal.UISynchronizer$3.run(Unknown Source)
+	at org.eclipse.swt.widgets.RunnableLock.run(Unknown Source)
+	... 79 more
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-03 15:05:43.035
+!MESSAGE Embedded HTTP server stopped
+!SESSION 2017-08-03 15:05:47.709 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-03 15:05:52.885
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-03 15:05:53.792
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-03 15:06:02.813
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]

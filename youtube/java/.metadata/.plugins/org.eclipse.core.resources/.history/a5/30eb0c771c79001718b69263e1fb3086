@@ -16,7 +16,7 @@
 		<input type="radio" name="profession" value="Developer"> Developer
 		<input type="radio" name="profession" value="Pianist"> Pianist
 		<br />
-		<select name="location" multiple size=3>
+		<select name="location">
 			<option value="New Jersey">New Jersey</option>
 			<option value="Massachusetts">Massachusetts</option>
 			<option value="The Moon">The Moon</option>

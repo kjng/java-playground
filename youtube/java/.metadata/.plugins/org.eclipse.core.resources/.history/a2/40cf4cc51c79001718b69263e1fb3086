@@ -31,10 +31,7 @@ public class XmlServlet extends HttpServlet {
 		String locations[] = request.getParameterValues("location");
 		
 		if (user != null) {
-			out.println("POST: " + fullName + "! " + user + ". Profession: " + profession + ". Locations: ");	
-			for (String location : locations) {
-				out.println(location);
-			}
+			out.println("POST: " + fullName + "! " + user + ". Profession: " + profession + ". Location: " + locations);			
 		} else {
 			out.println("POST: Hello there :)");
 		}

@@ -35,6 +35,7 @@ public class SimpleServlet extends HttpServlet {
 		
 		writer.println("Request parameter is " + user);
 		writer.println("Session parameter is " + (String) session.getAttribute("user"));
+		writer.println("Test test");
 		writer.println("Context parameter is " + (String) context.getAttribute("user"));
 	}
 

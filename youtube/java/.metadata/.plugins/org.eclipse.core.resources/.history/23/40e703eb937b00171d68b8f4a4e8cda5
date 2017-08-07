@@ -28,15 +28,7 @@
 	%>
 	
 	<br>
-	The value of k is <%=k %>!
-	<br>
-	Ima makin a for loop...
 	
-	<%
-	for (i = 0; i < 5; i++) {
-	%>
-	<br>
-	Loop iteration: <%=i %>
-	<% } %>
+	The value of k is <%=k %>!	
 </body>
 </html>

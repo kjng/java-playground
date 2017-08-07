@@ -938,3 +938,395 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.basicRun(Unknown Source)
 	at org.eclipse.equinox.launcher.Main.run(Unknown Source)
 	at org.eclipse.equinox.launcher.Main.main(Unknown Source)
+!SESSION 2017-08-07 10:50:58.559 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-07 10:51:09.185
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-07 10:51:10.443
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-08-07 10:51:26.527
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-07 10:51:43.511
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY org.eclipse.jst.jsp.core 4 4 2017-08-07 10:51:44.821
+!MESSAGE A workspace crash was detected. The previous session did not exit normally. Not using saved taglib indexes.
+
+!ENTRY org.eclipse.jdt.apt.core 4 1 2017-08-07 10:56:38.154
+!MESSAGE Processor failure during reconcile
+!STACK 0
+java.lang.IllegalStateException: cannot build annotation value object from java.lang.Object@36e7bb83
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.createAnnotationMemberValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.declaration.AnnotationMirrorImpl.getElementValues(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.extractElements(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.<init>(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.AbstractAP.process(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.dispatchToFileBasedProcessor(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.access$0(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable$ReconcileEnvCallback.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv$CallbackRequestor.acceptBinding(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.ASTParser.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv.openPipeline(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.AbstractCompilationEnv.newReconcileEnv(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.reconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTDuringReconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.notifyParticipants(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(Unknown Source)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.apt.core 4 1 2017-08-07 10:56:39.755
+!MESSAGE Processor failure during reconcile
+!STACK 0
+java.lang.IllegalStateException: cannot build annotation value object from java.lang.Object@36e7bb83
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.createAnnotationMemberValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.declaration.AnnotationMirrorImpl.getElementValues(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.extractElements(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.<init>(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.AbstractAP.process(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.dispatchToFileBasedProcessor(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.access$0(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable$ReconcileEnvCallback.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv$CallbackRequestor.acceptBinding(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.ASTParser.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv.openPipeline(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.AbstractCompilationEnv.newReconcileEnv(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.reconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTDuringReconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.notifyParticipants(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(Unknown Source)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.apt.core 4 1 2017-08-07 10:56:46.791
+!MESSAGE Processor failure during reconcile
+!STACK 0
+java.lang.IllegalStateException: cannot build annotation value object from java.lang.Object@36e7bb83
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.createAnnotationMemberValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.declaration.AnnotationMirrorImpl.getElementValues(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.extractElements(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.<init>(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.AbstractAP.process(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.dispatchToFileBasedProcessor(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.access$0(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable$ReconcileEnvCallback.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv$CallbackRequestor.acceptBinding(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.ASTParser.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv.openPipeline(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.AbstractCompilationEnv.newReconcileEnv(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.reconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTDuringReconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.notifyParticipants(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(Unknown Source)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.apt.core 4 1 2017-08-07 10:56:47.816
+!MESSAGE Processor failure during reconcile
+!STACK 0
+java.lang.IllegalStateException: cannot build annotation value object from java.lang.Object@36e7bb83
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.createAnnotationMemberValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.declaration.AnnotationMirrorImpl.getElementValues(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.extractElements(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.<init>(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.AbstractAP.process(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.dispatchToFileBasedProcessor(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.access$0(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable$ReconcileEnvCallback.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv$CallbackRequestor.acceptBinding(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.ASTParser.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv.openPipeline(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.AbstractCompilationEnv.newReconcileEnv(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.reconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTDuringReconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.notifyParticipants(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(Unknown Source)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.apt.core 4 1 2017-08-07 10:56:50.847
+!MESSAGE Processor failure during reconcile
+!STACK 0
+java.lang.IllegalStateException: cannot build annotation value object from java.lang.Object@36e7bb83
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.createAnnotationMemberValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.declaration.AnnotationMirrorImpl.getElementValues(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.extractElements(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.<init>(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.AbstractAP.process(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.dispatchToFileBasedProcessor(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.access$0(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable$ReconcileEnvCallback.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv$CallbackRequestor.acceptBinding(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.ASTParser.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv.openPipeline(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.AbstractCompilationEnv.newReconcileEnv(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.reconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTDuringReconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.notifyParticipants(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(Unknown Source)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.apt.core 4 1 2017-08-07 10:56:58.379
+!MESSAGE Processor failure during reconcile
+!STACK 0
+java.lang.IllegalStateException: cannot build annotation value object from java.lang.Object@36e7bb83
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.createAnnotationMemberValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.declaration.AnnotationMirrorImpl.getElementValues(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.extractElements(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.<init>(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.AbstractAP.process(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.dispatchToFileBasedProcessor(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.access$0(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable$ReconcileEnvCallback.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv$CallbackRequestor.acceptBinding(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.ASTParser.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv.openPipeline(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.AbstractCompilationEnv.newReconcileEnv(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.reconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTDuringReconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.notifyParticipants(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(Unknown Source)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.apt.core 2 1 2017-08-07 10:56:59.175
+!MESSAGE Unexpected failure running APT on the file(s): SimpleServlet.java
+!STACK 0
+java.lang.IllegalStateException: cannot build annotation value object from java.lang.Object@36e7bb83
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.createAnnotationMemberValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.declaration.AnnotationMirrorImpl.getElementValues(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.extractElements(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.<init>(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.AbstractAP.process(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.dispatchToFileBasedProcessor(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTInFileBasedMode(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.build(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.access$1(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable$1.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BuildEnv$CallbackRequestor.acceptBinding(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.ASTParser.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BuildEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.AbstractCompilationEnv.newBuildEnv(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.build(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.run(Unknown Source)
+	at org.eclipse.core.internal.resources.Workspace.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTDuringBuild(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.processAnnotations(Unknown Source)
+	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.processAnnotations(Unknown Source)
+	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(Unknown Source)
+	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(Unknown Source)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(Unknown Source)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager$2.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager.build(Unknown Source)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(Unknown Source)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.apt.core 4 1 2017-08-07 10:56:59.906
+!MESSAGE Processor failure during reconcile
+!STACK 0
+java.lang.IllegalStateException: cannot build annotation value object from java.lang.Object@36e7bb83
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.convertDOMValueToMirrorValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.util.Factory.createAnnotationMemberValue(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.declaration.AnnotationMirrorImpl.getElementValues(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.extractElements(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.utils.AnnotationCache.<init>(Unknown Source)
+	at com.ibm.jee.internal.ejb.annotations.processor.AbstractAP.process(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.dispatchToFileBasedProcessor(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.access$0(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable$ReconcileEnvCallback.run(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv$CallbackRequestor.acceptBinding(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(Unknown Source)
+	at org.eclipse.jdt.core.dom.ASTParser.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.BaseProcessorEnv.createASTs(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.ReconcileEnv.openPipeline(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.env.AbstractCompilationEnv.newReconcileEnv(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.reconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.APTDispatchRunnable.runAPTDuringReconcile(Unknown Source)
+	at org.eclipse.jdt.apt.core.internal.AptCompilationParticipant.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.notifyParticipants(Unknown Source)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(Unknown Source)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(Unknown Source)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(Unknown Source)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(Unknown Source)

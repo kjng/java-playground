@@ -1343,3 +1343,176 @@ java.lang.NullPointerException
 	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob$1.run(Unknown Source)
 	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob.run(Unknown Source)
 	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-07 16:40:47.402
+!MESSAGE Embedded HTTP server stopped
+!SESSION 2017-08-08 15:26:14.616 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-08 15:26:22.256
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-08 15:26:23.882
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-08 15:26:53.559
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-08 16:28:27.686
+!MESSAGE Embedded HTTP server stopped
+!SESSION 2017-08-09 15:50:22.823 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-09 15:50:31.522
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-09 15:50:33.439
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-09 15:50:48.216
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY org.eclipse.ui 4 0 2017-08-09 15:56:43.813
+!MESSAGE Unhandled event loop exception
+!STACK 0
+org.eclipse.swt.SWTException: Failed to execute runnable (org.eclipse.swt.SWTException: Widget is disposed)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Unknown Source)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Unknown Source)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(Unknown Source)
+	at org.eclipse.ui.internal.Workbench$5.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Unknown Source)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Unknown Source)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(Unknown Source)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(Unknown Source)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(Unknown Source)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(Unknown Source)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(Unknown Source)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.basicRun(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.run(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.main(Unknown Source)
+Caused by: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Unknown Source)
+	at org.eclipse.swt.widgets.Control.pack(Unknown Source)
+	at com.ibm.etools.rpe.internal.ui.DirectEditToolbarManager.show(Unknown Source)
+	at com.ibm.etools.rpe.internal.ui.DirectEditToolbarManager.hoverOccured(Unknown Source)
+	at com.ibm.etools.rpe.internal.ui.DesignPaneController$MouseHoverJob$1.run(Unknown Source)
+	at org.eclipse.swt.widgets.RunnableLock.run(Unknown Source)
+	... 25 more
+
+!ENTRY org.eclipse.jst.servlet.ui 4 0 2017-08-09 16:01:59.952
+!MESSAGE LoginServletProject does not exist
+!STACK 1
+Java Model Exception: Java Model Status [LoginServletProject does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newJavaModelException(Unknown Source)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaProject.getPackageFragmentRoots(Unknown Source)
+	at org.eclipse.jst.servlet.ui.internal.navigator.CompressedJavaProject.getNonExternalSourceFolders(Unknown Source)
+	at org.eclipse.jst.servlet.ui.internal.navigator.CompressedJavaProject.getJavaElement(Unknown Source)
+	at org.eclipse.jst.servlet.ui.internal.navigator.CompressedNodeAdapterFactory.getAdapter(Unknown Source)
+	at org.eclipse.core.internal.runtime.AdapterManager.getAdapter(Unknown Source)
+	at org.eclipse.core.internal.runtime.AdapterManager.loadAdapter(Unknown Source)
+	at org.eclipse.ui.internal.LegacyResourceSupport.getAdapter(Unknown Source)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(Unknown Source)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(Unknown Source)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(Unknown Source)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(Unknown Source)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2017-08-09 16:01:59.953
+!MESSAGE LoginServletProject does not exist
+
+!ENTRY org.eclipse.core.jobs 4 1 2017-08-09 16:09:52.487
+!MESSAGE Worker thread ended job: Starting Tomcat v8.0 Server at localhost(1827), but still holds rule: ThreadJob(Starting Tomcat v8.0 Server at localhost(1827),[Tomcat v8.0 Server at localhost])

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.kevinjang.LoginServlet.dto.User;
+
 import com.kevinjang.LoginServlet.service.LoginService;
 
 /**
@@ -28,6 +30,8 @@ public class LoginServlet extends HttpServlet {
 		boolean isAuthenticated = ls.authenticate(username, password);
 		
 		if (isAuthenticated) {
+			User user = ls.getUserInfo(username);
+			request.getSession().setAttribute("user", user);
 			response.sendRedirect("success.jsp");
 		} else {
 			response.sendRedirect("login.jsp");

@@ -1,0 +1,22 @@
+package com.kevinjang.LoginServlet.service;
+
+import java.util.HashMap;
+
+public class LoginService {
+	
+	HashMap<String, String> users = new HashMap();
+	
+	public LoginService() {
+		users.put("kevin", "Kevin Jang");
+		users.put("jsmith", "John Smith");
+	}
+	
+	public boolean authenticate(String username, String password) {
+		return (!password.equals(""));
+	}
+	
+	public String getUserName(String username) {
+		return users.get(username);
+	}
+	
+}

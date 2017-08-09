@@ -1516,3 +1516,16 @@ Java Model Exception: Java Model Status [LoginServletProject does not exist]
 
 !ENTRY org.eclipse.core.jobs 4 1 2017-08-09 16:09:52.487
 !MESSAGE Worker thread ended job: Starting Tomcat v8.0 Server at localhost(1827), but still holds rule: ThreadJob(Starting Tomcat v8.0 Server at localhost(1827),[Tomcat v8.0 Server at localhost])
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-08-09 16:37:00.249
+!MESSAGE An internal error occurred during: "Design pane refresh".
+!STACK 0
+java.lang.NullPointerException
+	at com.ibm.etools.rpe.internal.model.TransformerManager.printNode(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.TransformerManager.getNodeSource(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.handleVisualizationReplacement(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.processStructureChangeForNode(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.processStructureChange(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob$1.run(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)

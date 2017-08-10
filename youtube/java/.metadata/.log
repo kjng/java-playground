@@ -1575,3 +1575,16 @@ Chain 2:
 
 !ENTRY com.ibm.datatools.core.http 1 0 2017-08-10 13:22:02.845
 !MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-08-10 13:47:54.017
+!MESSAGE An internal error occurred during: "Design pane refresh".
+!STACK 0
+java.lang.NullPointerException
+	at com.ibm.etools.rpe.internal.model.TransformerManager.printNode(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.TransformerManager.getNodeSource(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.handleVisualizationReplacement(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.processStructureChangeForNode(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.processStructureChange(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob$1.run(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)

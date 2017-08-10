@@ -10,7 +10,9 @@
 <body>
 	<h3>You have been logged in successfully</h3>
 	
-	<jsp:useBean id="user" class="org.kevinjang.LoginServlet.dto.User" scope="request"></jsp:useBean>
+	<%
+		User user = (User)request.getAttribute("user");
+	%>
 	
 	Welcome back, <%=user.getFullName() %>!
 </body>

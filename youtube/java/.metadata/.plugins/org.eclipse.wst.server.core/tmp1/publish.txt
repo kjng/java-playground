@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Wed Aug 09 16:41:00 EDT 2017
+#Thu Aug 10 13:35:06 EDT 2017
 org.eclipse.jst.jee.server\:LoginServlet=C\:\\Program Files\\Apache Software Foundation\\Tomcat 8.0\\wtpwebapps\\LoginServlet
 org.eclipse.jst.jee.server\:SimpleServletProject=C\:\\Program Files\\Apache Software Foundation\\Tomcat 8.0\\wtpwebapps\\SimpleServletProject

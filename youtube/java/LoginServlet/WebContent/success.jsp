@@ -11,7 +11,7 @@
 	<h3>You have been logged in successfully</h3>
 	
 	<%
-		User user = (User)session.getAttribute("user");
+		User user = (User)request.getAttribute("user");
 	%>
 	
 	Welcome back, <%=user.getFullName() %>!

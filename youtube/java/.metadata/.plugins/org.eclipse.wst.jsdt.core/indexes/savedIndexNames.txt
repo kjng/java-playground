@@ -1,8 +1,0 @@
-INDEX VERSION 1.3+C:\Users\sfk1j\Desktop\java_programs\youtube\java\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-4072477920.index
-3858166615.index
-1706475629.index
-657517668.index
-2270901007.index
-999238858.index
-200328948.index

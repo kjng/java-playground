@@ -1,7 +1,0 @@
-package org.kevinjang.simpleservlet;
-
-import javax.servlet.http.HttpServlet;
-
-public class XmlServlet extends HttpServlet {
-
-}

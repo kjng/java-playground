@@ -1,5 +1,0 @@
-package org.kevinjang.LoginServlet.dto;
-
-public class User {
-
-}

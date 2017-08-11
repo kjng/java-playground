@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema 
+	xmlns="http://com.ibm.team.apt/workItemProgressMode" 
+	xmlns:process="http://com.ibm.team.process" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	attributeFormDefault="unqualified" 
+	elementFormDefault="qualified" 
+	targetNamespace="http://com.ibm.team.apt/workItemProgressMode"
+	>
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="workItemProgressMode">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:choice maxOccurs="unbounded" minOccurs="1">
+					<xsd:element name="estimationMode" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="estimateOutputFormat" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="backlogIteration" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:attribute name="id" type="xsd:string" use="required"/>
+							<xsd:attribute name="path" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+				<xsd:attribute fixed="com.ibm.team.apt.configuration.workItemProgressMode" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="workItemProgressMode"/>
+</xsd:schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://com.ibm.team.apt/requiredEstimates" xmlns:process="http://com.ibm.team.process" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.apt/requiredEstimates">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="requiredEstimatesType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="estimates">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="unbounded" minOccurs="0" name="estimate">
+									<xsd:complexType>
+										<xsd:attribute name="id" type="xsd:string" use="required"/>
+									</xsd:complexType>
+								</xsd:element>
+              				</xsd:sequence>
+							<xsd:attribute name="workItemType" type="xsd:string" use="optional"/>
+							<xsd:attribute name="workItemTypeCategory" type="xsd:string" use="optional"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.apt.advisor.requiredEstimates" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="requiredEstimatesType"/>
+</xsd:schema>

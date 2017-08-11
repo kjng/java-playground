@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.team.workitem/workflow" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.workitem/workflow">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="workflowDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+			
+				<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="stateGroupDefinition">
+						<xsd:complexType>
+							<xsd:attribute name="category" use="required">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="open"/>
+										<xsd:enumeration value="inprogress"/>
+										<xsd:enumeration value="closed"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+							<xsd:attribute name="id" type="xsd:string" use="required"/>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+							<xsd:attribute name="icon" type="xsd:string"/>
+							<xsd:attribute name="oslcGroup" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="workflowDefinition">
+						<xsd:complexType>
+							<xsd:sequence maxOccurs="1" minOccurs="1">
+								<xsd:element ref="workflow"/>
+							</xsd:sequence>
+							<xsd:attribute name="id" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				
+				<xsd:attribute fixed="com.ibm.team.workitem.configuration.workflow" name="id" type="xsd:string" use="required"/>
+				
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="workflow">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded" minOccurs="1">
+				<xsd:choice>
+					<xsd:element ref="action"/>
+					<xsd:element ref="resolution"/>
+					<xsd:element ref="state"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="description" type="xsd:string"/>
+			<xsd:attribute name="startActionId" type="xsd:string" use="required"/>
+			<xsd:attribute name="resolveActionId" type="xsd:string"/>
+			<xsd:attribute name="reopenActionId" type="xsd:string"/>
+			<xsd:attribute name="duplicateResolutionId" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="action">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="resolution"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:string" use="required"/>
+			<xsd:attribute name="name" type="xsd:string"/>
+			<xsd:attribute name="description" type="xsd:string"/>
+			<xsd:attribute name="state" type="xsd:string"/>
+			<xsd:attribute name="icon" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="resolution">
+		<xsd:complexType>
+			<xsd:attribute name="id" type="xsd:string" use="required"/>
+			<xsd:attribute name="name" type="xsd:string"/>
+			<xsd:attribute name="externalURI" type="xsd:string" use="optional"/>
+			<xsd:attribute name="description" type="xsd:string"/>
+			<xsd:attribute name="icon" type="xsd:string"/>
+			<xsd:attribute name="group" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="state">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="action"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:string" use="required"/>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="externalURI" type="xsd:string" use="optional"/>
+			<xsd:attribute name="description" type="xsd:string"/>
+			<xsd:attribute name="showResolution" type="xsd:boolean"/>
+			<xsd:attribute name="group" type="xsd:string"/>
+			<xsd:attribute name="icon" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="workflowDataType"/>
+</xsd:schema>

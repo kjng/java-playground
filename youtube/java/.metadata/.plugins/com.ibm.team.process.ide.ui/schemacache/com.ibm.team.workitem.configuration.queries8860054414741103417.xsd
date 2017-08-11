@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://com.ibm.team.workitem/queries" xmlns:process="http://com.ibm.team.process" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.workitem/queries">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:element name="select">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="column"/>
+			</xsd:sequence>
+			<xsd:attribute name="type" type="xsd:string" use="optional"/>
+			<xsd:attribute name="uri" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="column">
+		<xsd:complexType>
+			<xsd:attribute name="attribute" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="orderBy">
+		<xsd:complexType>
+			<xsd:attribute name="attribute" type="xsd:string" use="required"/>
+			<xsd:attribute name="direction" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="asc"/>
+						<xsd:enumeration value="desc"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="where">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="and"/>
+				<xsd:element ref="or"/>
+				<xsd:element ref="condition"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+				
+	<xsd:element name="and">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="1">
+				<xsd:element ref="or"/>
+				<xsd:element ref="and"/>
+				<xsd:element ref="condition"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="or">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="1">
+				<xsd:element ref="and"/>
+				<xsd:element ref="or"/>
+				<xsd:element ref="condition"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="condition">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="attribute"/>
+				<xsd:choice maxOccurs="1" minOccurs="0">
+					<xsd:element ref="value"/>
+					<xsd:element ref="variable"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:attribute name="operator" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="attribute">
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="value">
+		<xsd:complexType>
+			<xsd:attribute name="type" type="xsd:string" use="required"/>
+			<xsd:attribute name="content" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="variable">
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+			<xsd:attribute name="type" type="xsd:string" use="required" />
+			<xsd:attribute name="arguments" type="xsd:string" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="queriesDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="query">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="1" minOccurs="0" ref="select"/>
+								<xsd:element maxOccurs="1" minOccurs="0" ref="where"/>
+								<xsd:element maxOccurs="unbounded" minOccurs="0" ref="orderBy"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+							<xsd:attribute name="tags" type="xsd:string"/>
+							<xsd:attribute name="id" type="xsd:string"/>
+							<xsd:attribute name="description" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>		
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.configuration.queries" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="queriesDataType"/>	
+
+</xsd:schema>

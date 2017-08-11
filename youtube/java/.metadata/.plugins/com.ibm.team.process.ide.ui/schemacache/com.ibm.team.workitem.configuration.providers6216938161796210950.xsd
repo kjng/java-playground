@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://com.ibm.team.workitem/providers" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.workitem/providers">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="provider">
+		<xsd:sequence>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="providerId" type="xsd:string" use="required"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="providersDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element maxOccurs="1" minOccurs="0" name="valueSetProviders">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="valueSetProvider" type="provider" minOccurs="0" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="defaultValueProviders">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="defaultValueProvider" type="provider" minOccurs="0" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="valueProviders">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="valueProvider" type="provider" minOccurs="0" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="conditions">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="condition" type="provider" minOccurs="0" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="validators">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="validator" type="provider" minOccurs="0" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+	            </xsd:choice>
+				<xsd:attribute fixed="com.ibm.team.workitem.configuration.providers" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="providersDataType"/>
+</xsd:schema>

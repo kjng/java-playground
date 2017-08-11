@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.team.workitem/workitemConfiguration" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.workitem/workitemConfiguration">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:element name="configuration" type="workItemConfigurationType"/>
+	
+	<xsd:complexType name="workItemConfigurationType">
+		<xsd:sequence>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" processContents="lax"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="OSLCTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="defect"/>
+			<xsd:enumeration value="planItem"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+  
+	<xsd:complexType name="typeBinding">
+		<xsd:complexContent>
+			<xsd:restriction base="workItemConfigurationType">
+				<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+					<xsd:element name="typeBinding">
+						<xsd:complexType>
+							<xsd:attribute name="oslcTypeId" type="OSLCTypes" use="required"/>
+							<xsd:attribute name="workItemTypeId" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.configuration.oslc.types" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="stateGroup">
+		<xsd:complexContent>
+			<xsd:restriction base="workItemConfigurationType">
+				<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+					<xsd:element name="stateGroup">
+						<xsd:complexType>
+							<xsd:attribute name="id" type="xsd:string" use="required"/>
+							<xsd:attribute name="name" type="xsd:string" use="optional"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.configuration.stateGroups" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="configurationDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+					<xsd:element name="configuration" type="workItemConfigurationType"/>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.configuration" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="configurationDataType"/>
+	
+</xsd:schema>

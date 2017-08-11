@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://com.ibm.team.build/notification" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.build/notification">
+    
+    <xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+    
+    <xsd:element name="emails">
+        <xsd:complexType>
+            <xsd:sequence>
+               <xsd:element ref="email" maxOccurs="unbounded" minOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="email">
+        <xsd:complexType>
+            <xsd:attribute name="address" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="roles">
+        <xsd:complexType>
+            <xsd:sequence>
+               <xsd:element ref="role" maxOccurs="unbounded" minOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="role">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="users">
+        <xsd:complexType>
+            <xsd:sequence>
+               <xsd:element maxOccurs="unbounded" minOccurs="0" name="user">
+                  <xsd:complexType>
+                    <xsd:attribute name="id" type="xsd:string" use="required"/>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            <xsd:attribute name="scm" type="xsd:boolean" use="required"/>
+            <xsd:attribute name="request" type="xsd:boolean" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="user">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="criteria">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="emails" maxOccurs="unbounded" minOccurs="0"/>
+                <xsd:element ref="users" maxOccurs="unbounded" minOccurs="0"/>
+                <xsd:element ref="roles" maxOccurs="unbounded" minOccurs="0"/>
+            </xsd:sequence>
+            
+        <xsd:attribute name="label" type="xsd:string" use="required"/>
+        
+        <xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+        
+        <xsd:attribute name="abandoned" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="always"/>                                            
+                    <xsd:enumeration value="errors"/>
+                    <xsd:enumeration value="ignore"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        
+        <xsd:attribute name="completed" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="errors"/>
+                    <xsd:enumeration value="always"/>
+                    <xsd:enumeration value="ignore"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        
+        <xsd:attribute name="personal" type="xsd:boolean" use="required"/>
+
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:complexType name="presentationsDataType">
+        <xsd:complexContent>
+            <xsd:restriction base="process:configurationDataType">
+                <xsd:sequence>
+    
+                    <xsd:element name="criterias">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:choice maxOccurs="unbounded" minOccurs="1">
+                                    <xsd:element ref="criteria"/>
+                                </xsd:choice>
+                            </xsd:sequence>   
+                        </xsd:complexType>
+                    </xsd:element>
+    
+                </xsd:sequence>                
+            </xsd:restriction>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="presentationsDataType"/>
+</xsd:schema>

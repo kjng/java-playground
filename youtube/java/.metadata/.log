@@ -1588,3 +1588,976 @@ java.lang.NullPointerException
 	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob$1.run(Unknown Source)
 	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob.run(Unknown Source)
 	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-08-10 13:59:52.984
+!MESSAGE An internal error occurred during: "Design pane refresh".
+!STACK 0
+java.lang.NullPointerException
+	at com.ibm.etools.rpe.internal.model.TransformerManager.printNode(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.TransformerManager.getNodeSource(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.handleVisualizationReplacement(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.processStructureChangeForNode(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.ModelSynchronizerUtil.processStructureChange(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob$1.run(Unknown Source)
+	at com.ibm.etools.rpe.internal.model.adapters.StructuralChangeUpdaterJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+!SESSION 2017-08-10 14:51:24.339 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:51:56.786
+!MESSAGE [SCR] Enabling components of bundle com.ibm.rational.llc.ide.core did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:52:26.887
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.e4.core.di.extensions did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:52:56.941
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.e4.core.services did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:53:27.011
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.e4.ui.css.swt.theme did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:53:57.014
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.e4.ui.di did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:54:27.018
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.e4.ui.services did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:54:57.021
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.e4.ui.workbench did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:55:27.024
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.e4.ui.workbench.swt did not complete in 30000 ms 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-10 14:55:27.040
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:55:57.043
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.epp.mpc.core did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:56:27.046
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.epp.mpc.ui did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:56:57.049
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.frameworkadmin.equinox did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:57:27.068
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.artifact.repository did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:57:57.071
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.core did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:58:27.074
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.director did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:58:57.077
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.engine did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:59:27.081
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.garbagecollector did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 14:59:57.084
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.metadata.repository did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:00:27.087
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.repository did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:00:57.153
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.transport.ecf did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:01:27.156
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.ui did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:01:57.159
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.ui.importexport did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:02:27.162
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.ui.sdk did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:02:57.165
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.p2.updatechecker did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.registry 4 0 2017-08-10 15:03:02.182
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Unable to acquire the state change lock for the module: osgi.identity; osgi.identity="org.eclipse.equinox.registry"; type="osgi.bundle"; version:Version="3.5.400.v20140428-1507"; singleton:="true" [id=2318] STARTED [STARTED]
+	at org.eclipse.osgi.container.Module.lockStateChange(Unknown Source)
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:03:32.185
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.equinox.simpleconfigurator.manipulator did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:04:02.188
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.ui.trace did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-10 15:04:27.691
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:04:32.191
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.ui.workbench did not complete in 30000 ms 
+
+!ENTRY org.eclipse.equinox.ds 2 0 2017-08-10 15:05:02.194
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.update.configurator did not complete in 30000 ms 
+
+!ENTRY org.eclipse.osgi 2 0 2017-08-10 15:05:07.226
+!MESSAGE While loading class "org.eclipse.core.runtime.Plugin", thread "Thread[Start Level: Equinox Container: 900590e9-fc7d-0017-172c-add50ea62766,5,main]" timed out waiting (5016ms) for thread "Thread[Component Resolve Thread,5,main]" to finish starting bundle "org.eclipse.core.runtime_3.10.0.v20140318-2214 [2055]". To avoid deadlock, thread "Thread[Start Level: Equinox Container: 900590e9-fc7d-0017-172c-add50ea62766,5,main]" is proceeding but "org.eclipse.core.runtime.Plugin" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: Unable to acquire the state change lock for the module: osgi.identity; osgi.identity="org.eclipse.core.runtime"; type="osgi.bundle"; version:Version="3.10.0.v20140318-2214"; singleton:="true" [id=2055] STARTED [STARTED]
+	at org.eclipse.osgi.container.Module.lockStateChange(Unknown Source)
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.framework.util.SecureAction.start(Unknown Source)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.sources.MultiSourcePackage.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.defineClassImpl(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.defineClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.defineClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findClassImpl(Unknown Source)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClassImpl(Unknown Source)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.loadBundleActivator(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(Unknown Source)
+	at org.eclipse.osgi.container.Module.doStart(Unknown Source)
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-08-10 15:12:46.836
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-10 15:13:14.687
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY org.eclipse.equinox.security 1 0 2017-08-10 15:15:44.770
+!MESSAGE New keyring password generated. 
+
+!ENTRY org.eclipse.ui 4 4 2017-08-10 15:17:13.453
+!MESSAGE An internal error has occurred.
+!STACK 0
+org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Unknown Source)
+	at org.eclipse.swt.widgets.Tree.getSelection(Unknown Source)
+	at org.eclipse.jface.viewers.TreeViewer.getSelection(Unknown Source)
+	at org.eclipse.jface.viewers.TreeViewer.setSelection(Unknown Source)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setSelectionToWidget(Unknown Source)
+	at org.eclipse.ui.navigator.CommonViewer.setSelectionToWidget(Unknown Source)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setSelectionToWidget(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(Unknown Source)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(Unknown Source)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(Unknown Source)
+	at org.eclipse.ui.navigator.CommonViewer.refresh(Unknown Source)
+	at com.ibm.etools.ui.navigator.SDFilteredTree$SDNotifyingTreeViewer.refresh(Unknown Source)
+	at org.eclipse.jst.j2ee.navigator.internal.LoadingDDUIJob.runInUIThread(Unknown Source)
+	at org.eclipse.ui.progress.UIJob$1.run(Unknown Source)
+	at org.eclipse.swt.widgets.RunnableLock.run(Unknown Source)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Unknown Source)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Unknown Source)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.block(Unknown Source)
+	at org.eclipse.jface.operation.ModalContext.run(Unknown Source)
+	at org.eclipse.jface.dialogs.ProgressMonitorDialog.run(Unknown Source)
+	at org.eclipse.ui.internal.progress.ProgressMonitorJobsDialog.run(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.disconnectFromWorkspace(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.postShutdown(Unknown Source)
+	at org.eclipse.ui.internal.Workbench.shutdown(Unknown Source)
+	at org.eclipse.ui.internal.Workbench.busyClose(Unknown Source)
+	at org.eclipse.ui.internal.Workbench.access$22(Unknown Source)
+	at org.eclipse.ui.internal.Workbench$19.run(Unknown Source)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(Unknown Source)
+	at org.eclipse.ui.internal.Workbench.close(Unknown Source)
+	at org.eclipse.ui.internal.Workbench.close(Unknown Source)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(Unknown Source)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$16(Unknown Source)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(Unknown Source)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(Unknown Source)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(Unknown Source)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(Unknown Source)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(Unknown Source)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$11.shellClosed(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(Unknown Source)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Display.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Unknown Source)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Unknown Source)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Unknown Source)
+	at org.eclipse.swt.widgets.Control.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Shell.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Display.windowProc(Unknown Source)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Control.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Shell.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Display.windowProc(Unknown Source)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Control.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Shell.windowProc(Unknown Source)
+	at org.eclipse.swt.widgets.Display.windowProc(Unknown Source)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Unknown Source)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(Unknown Source)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(Unknown Source)
+	at org.eclipse.ui.internal.Workbench$5.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Unknown Source)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Unknown Source)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(Unknown Source)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(Unknown Source)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(Unknown Source)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(Unknown Source)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(Unknown Source)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.basicRun(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.run(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.main(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-10 15:17:14.097
+!MESSAGE Embedded HTTP server stopped
+!SESSION 2017-08-10 15:17:16.933 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-10 15:17:26.154
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-10 15:17:27.668
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-10 15:17:43.707
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY com.ibm.team.workitem.rcp.ui 4 0 2017-08-10 15:18:13.397
+!MESSAGE Exception running 'Activating Work Item RCP UI plug-in'
+!STACK 0
+java.lang.RuntimeException: CRJAZ0109I Communications error.
+	at com.ibm.team.repository.transport.client.RemoteTeamService.rte(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.getAppropriateException(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.invoke(Unknown Source)
+	at com.ibm.team.repository.transport.client.ServiceInvocationHandler.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy28.getAllConfigurations(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invokeServiceCall(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy28.getAllConfigurations(Unknown Source)
+	at com.ibm.team.workitem.client.internal.ComponentConfigurationClient.fetchConfigurations(Unknown Source)
+	at com.ibm.team.workitem.client.internal.ComponentConfigurationClient.initialize(Unknown Source)
+	at com.ibm.team.workitem.rcp.ui.internal.WorkItemRCPUIPlugin$2.runProtected(Unknown Source)
+	at com.ibm.team.foundation.client.util.FoundationJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+Caused by: com.ibm.team.repository.common.transport.TeamServiceException: CRJAZ0099E An HTTP error occurred when this URL was being accessed: /ccm/service/com.ibm.team.rtc.common.configuration.IComponentConfigurationService. Error details: socket channel closed.
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executePrimitiveRequest(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeWithAuthHandling(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.executeCancelableHttpMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.invokePost(Unknown Source)
+	... 16 more
+Caused by: java.io.IOException: socket channel closed
+	at com.ibm.team.repository.transport.client.InterruptableSocket2$InterruptableSocketInputStream.available(Unknown Source)
+	at com.ibm.jsse2.as.a(Unknown Source)
+	at com.ibm.jsse2.C.a(Unknown Source)
+	at com.ibm.jsse2.C.a(Unknown Source)
+	at com.ibm.jsse2.D.a(Unknown Source)
+	at com.ibm.jsse2.C.r(Unknown Source)
+	at com.ibm.jsse2.C.a(Unknown Source)
+	at com.ibm.jsse2.as.a(Unknown Source)
+	at com.ibm.jsse2.as.i(Unknown Source)
+	at com.ibm.jsse2.as.a(Unknown Source)
+	at com.ibm.jsse2.as.startHandshake(Unknown Source)
+	at com.ibm.team.repository.transport.client.SecureInterruptableSocketFactory2.createSocket(Unknown Source)
+	at com.ibm.team.repository.transport.client.SecureInterruptableSocketFactory2.createEncryptedSocket(Unknown Source)
+	at com.ibm.team.repository.transport.client.SecureInterruptableSocketFactory2.connectSocket(Unknown Source)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(Unknown Source)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(Unknown Source)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(Unknown Source)
+	at org.apache.http.impl.execchain.MainClientExec.execute(Unknown Source)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(Unknown Source)
+	at org.apache.http.impl.execchain.RetryExec.execute(Unknown Source)
+	at org.apache.http.impl.execchain.RedirectExec.execute(Unknown Source)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(Unknown Source)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer$1.execute(Unknown Source)
+	... 22 more
+
+!ENTRY com.ibm.team.process.rcp.ui 4 0 2017-08-10 15:18:14.568
+!MESSAGE Error logged from Process RCP UI: 
+!STACK 0
+com.ibm.team.repository.transport.client.InvalidUserCredentialsException: CRJAZ0124E The user name or password is invalid.
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.formBasedAuthenticate(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.handleAuthentication(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeWithAuthHandling(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.executeCancelableHttpMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.invokePost(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.invoke(Unknown Source)
+	at com.ibm.team.repository.transport.client.ServiceInvocationHandler.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy18.describe(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invokeServiceCall(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy18.describe(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository$4.run(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository$4.run(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository$3.run(Unknown Source)
+	at com.ibm.team.repository.common.transport.CancelableCaller.call(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository.callCancelableService(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository.internalLogin(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository.login(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository.login(Unknown Source)
+	at com.ibm.team.process.internal.rcp.ui.LoginAction$1.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-10 15:19:57.278
+!MESSAGE Embedded HTTP server stopped
+!SESSION 2017-08-10 15:19:59.925 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160427_301573 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160427_1620_B301573
+JIT  - tr.r14.java.green_20160329_114288
+GC   - R28_Java8_SR3_20160427_1620_B301573_CMPRSS
+J9CL - 20160427_301573
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ibm.rational.rad.product.v95.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ibm.rational.rad.product.v95.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2017-08-10 15:20:07.449
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ecf.provider.filetransfer.httpclient4 4 0 2017-08-10 15:20:08.745
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.ecf.provider.filetransfer.httpclient4 [2203]
+  Bundle was not resolved because of a uses contraint violation.
+  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"] because it is exposed to package 'org.apache.http.config' from resources org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"] and org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.apache.httpcomponents.httpcore)(&(bundle-version>=4.3.0)(!(bundle-version>=4.4.0))))
+     |
+    provide: osgi.wiring.bundle: org.apache.httpcomponents.httpcore
+  org.apache.httpcomponents.httpcore [osgi.identity; osgi.identity="org.apache.httpcomponents.httpcore"; type="osgi.bundle"; version:Version="4.3.3.v201411290715"]
+
+Chain 2:
+  org.eclipse.ecf.provider.filetransfer.httpclient4 [osgi.identity; osgi.identity="org.eclipse.ecf.provider.filetransfer.httpclient4"; type="osgi.bundle"; version:Version="1.0.1043.v20141221-2352"; singleton:="true"]
+    import: (&(osgi.wiring.package=org.apache.http.entity)(version>=4.1.0))
+     |
+    export: osgi.wiring.package: org.apache.http.entity; uses:=org.apache.http.config
+    export: osgi.wiring.package=org.apache.http.config
+  org.apache.http [osgi.identity; osgi.identity="org.apache.http"; type="osgi.bundle"; version:Version="4.4.1.v20160630_1732"]
+	at org.eclipse.osgi.container.Module.start(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(Unknown Source)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(Unknown Source)
+
+!ENTRY com.ibm.team.workitem.rcp.ui 4 0 2017-08-10 15:20:15.441
+!MESSAGE Exception running 'Activating Work Item RCP UI plug-in'
+!STACK 0
+java.lang.RuntimeException: CRJAZ0109I Communications error.
+	at com.ibm.team.repository.transport.client.RemoteTeamService.rte(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.getAppropriateException(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.invoke(Unknown Source)
+	at com.ibm.team.repository.transport.client.ServiceInvocationHandler.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy28.getAllConfigurations(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invokeServiceCall(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy28.getAllConfigurations(Unknown Source)
+	at com.ibm.team.workitem.client.internal.ComponentConfigurationClient.fetchConfigurations(Unknown Source)
+	at com.ibm.team.workitem.client.internal.ComponentConfigurationClient.initialize(Unknown Source)
+	at com.ibm.team.workitem.rcp.ui.internal.WorkItemRCPUIPlugin$2.runProtected(Unknown Source)
+	at com.ibm.team.foundation.client.util.FoundationJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+Caused by: com.ibm.team.repository.transport.client.InvalidUserCredentialsException: CRJAZ0124E The user name or password is invalid.
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.formBasedAuthenticate(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.handleAuthentication(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeWithAuthHandling(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamServer.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.executeCancelableHttpMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.invokePost(Unknown Source)
+	... 16 more
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-10 15:20:19.350
+!MESSAGE Embedded server started: [HTTP port: 56788, HTTPS port: 56789]
+
+!ENTRY com.ibm.team.filesystem.ide.ui 4 0 2017-08-10 15:21:06.576
+!MESSAGE Unable to obtain license to read SCM related data: An error response was received from the Jazz Team Server. Status=400.  Message: CRJAZ1848E To perform the &quot;com.ibm.team.scm.readaccess.general&quot; operation, the user (userid=&quot;sfk1j&quot;) must have one of the following licenses that are installed on the server: Rational Team Concert.Developer for IBM Enterprise Platforms, Rational Team Concert.Contributor-Floating, Rational Team Concert.Developer, CLM Server Monitoring.User. The server administrator can assign licenses..
+!STACK 0
+com.ibm.team.repository.common.LicenseNotGrantedException: Unable to obtain license to read SCM related data: An error response was received from the Jazz Team Server. Status=400.  Message: CRJAZ1848E To perform the &quot;com.ibm.team.scm.readaccess.general&quot; operation, the user (userid=&quot;sfk1j&quot;) must have one of the following licenses that are installed on the server: Rational Team Concert.Developer for IBM Enterprise Platforms, Rational Team Concert.Contributor-Floating, Rational Team Concert.Developer, CLM Server Monitoring.User. The server administrator can assign licenses..
+	at com.ibm.team.scm.service.internal.AbstractScmService.assertLicense(AbstractScmService.java:395)
+	at com.ibm.team.scm.service.internal.ScmService.refreshWorkspaces(ScmService.java:5070)
+	at sun.reflect.GeneratedMethodAccessor430.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1358.refreshWorkspaces(null)
+	at sun.reflect.GeneratedMethodAccessor430.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleMethod(AbstractTeamServerServlet.java:1504)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.executeMethod(AbstractTeamServerServlet.java:1057)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.doPost(AbstractTeamServerServlet.java:824)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:595)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleRequest2(AbstractTeamServerServlet.java:2600)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleRequest(AbstractTeamServerServlet.java:2388)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.service(AbstractTeamServerServlet.java:1836)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at org.eclipse.equinox.http.registry.internal.ServletManager$ServletWrapper.service(ServletManager.java:180)
+	at org.eclipse.equinox.http.servlet.internal.ServletRegistration.service(ServletRegistration.java:61)
+	at org.eclipse.equinox.http.servlet.internal.ProxyServlet.processAlias(ProxyServlet.java:128)
+	at org.eclipse.equinox.http.servlet.internal.ProxyServlet.service(ProxyServlet.java:76)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at org.eclipse.equinox.servletbridge.BridgeServlet.service(BridgeServlet.java:152)
+	at com.ibm.team.repository.server.servletbridge.JazzServlet.service(JazzServlet.java:74)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1232)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:781)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:480)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.invokeTarget(WebAppFilterChain.java:136)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:97)
+	at com.ibm.team.repository.server.servletbridge.BridgeFilter.processDelegate(BridgeFilter.java:165)
+	at com.ibm.team.repository.server.servletbridge.BridgeFilter.doFilter(BridgeFilter.java:198)
+	at com.ibm.ws.webcontainer.filter.FilterInstanceWrapper.doFilter(FilterInstanceWrapper.java:195)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:91)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:967)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1107)
+	at com.ibm.ws.webcontainer.servlet.CacheServletWrapper.handleRequest(CacheServletWrapper.java:87)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:947)
+	at com.ibm.ws.webcontainer.WSWebContainer.handleRequest(WSWebContainer.java:1817)
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:200)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:463)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewRequest(HttpInboundLink.java:530)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.processRequest(HttpInboundLink.java:316)
+	at com.ibm.ws.http.channel.inbound.impl.HttpICLReadCallback.complete(HttpICLReadCallback.java:88)
+	at com.ibm.ws.ssl.channel.impl.SSLReadServiceContext$SSLReadCompletedCallback.complete(SSLReadServiceContext.java:1820)
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:175)
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217)
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161)
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:138)
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:204)
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775)
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905)
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1892)
+	at com.ibm.team.repository.common.internal.marshal.util.MarshallerUtil.decodeExceptions(Unknown Source)
+	at com.ibm.team.repository.common.internal.marshal.util.MarshallerUtil.decodeExceptions(Unknown Source)
+	at com.ibm.team.repository.common.internal.marshal.util.MarshallerUtil.decodeFault(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.constructExceptionFromFault(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.invoke(Unknown Source)
+	at com.ibm.team.repository.transport.client.ServiceInvocationHandler.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy36.refreshWorkspaces(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invokeServiceCall(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy36.refreshWorkspaces(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.ibm.team.scm.client.internal.ScmServiceInterfaceProxy$2.run(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository$3.run(Unknown Source)
+	at com.ibm.team.repository.common.transport.CancelableCaller.call(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository.callCancelableService(Unknown Source)
+	at com.ibm.team.scm.client.internal.ScmClientLibraryContext.callCancelableService(Unknown Source)
+	at com.ibm.team.scm.client.internal.ScmServiceInterfaceProxy.invokeCancelableService(Unknown Source)
+	at com.ibm.team.scm.client.internal.ScmServiceInterfaceProxy.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy36.refreshWorkspaces(Unknown Source)
+	at com.ibm.team.scm.client.internal.WorkspaceManager.getWorkspaceConnection(Unknown Source)
+	at com.ibm.team.internal.filesystem.ui.wizards.join.NewWorkspaceSeedData.initialize(Unknown Source)
+	at com.ibm.team.internal.filesystem.ui.wizards.join.JoinWorkspaceNamePage$3.repositoryRun(Unknown Source)
+	at com.ibm.team.repository.rcp.ui.operations.RepositoryOperation.run(Unknown Source)
+	at com.ibm.team.repository.rcp.ui.operations.JobRunner.run(Unknown Source)
+	at com.ibm.team.repository.rcp.ui.operations.JobRunner$1.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+Caused by: com.ibm.team.repository.common.LicenseNotGrantedException: An error response was received from the Jazz Team Server. Status=400.  Message: CRJAZ1848E To perform the &quot;com.ibm.team.scm.readaccess.general&quot; operation, the user (userid=&quot;sfk1j&quot;) must have one of the following licenses that are installed on the server: Rational Team Concert.Developer for IBM Enterprise Platforms, Rational Team Concert.Contributor-Floating, Rational Team Concert.Developer, CLM Server Monitoring.User. The server administrator can assign licenses.
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicenseRemotely(LicenseService.java:205)
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicense(LicenseService.java:181)
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicenseForContributor(LicenseService.java:211)
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicense(LicenseService.java:491)
+	at sun.reflect.GeneratedMethodAccessor427.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1115.assertLicense(null)
+	at com.ibm.team.repository.service.internal.license.jts.JtsLicenseService.assertLicense(JtsLicenseService.java:38)
+	at sun.reflect.GeneratedMethodAccessor427.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1229.assertLicense(null)
+	at com.ibm.team.scm.service.internal.AbstractScmService.assertLicense(AbstractScmService.java:385)
+	... 90 more
+Caused by: com.ibm.team.repository.common.LicenseNotGrantedException: An error response was received from the Jazz Team Server. Status=400.  Message: CRJAZ1848E To perform the &quot;com.ibm.team.scm.readaccess.general&quot; operation, the user (userid=&quot;sfk1j&quot;) must have one of the following licenses that are installed on the server: Rational Team Concert.Developer for IBM Enterprise Platforms, Rational Team Concert.Contributor-Floating, Rational Team Concert.Developer, CLM Server Monitoring.User. The server administrator can assign licenses.
+	at com.ibm.team.repository.service.internal.license.LicenseState$AssertLicenseExceptionReporter.report(LicenseState.java:1694)
+	at com.ibm.team.repository.service.internal.license.LicenseState.assertLicenseImpl(LicenseState.java:1065)
+	at com.ibm.team.repository.service.internal.license.LicenseState.assertLicense(LicenseState.java:909)
+	at com.ibm.team.repository.service.internal.license.LicenseService.internalAssertLicense2(LicenseService.java:1594)
+	at com.ibm.team.repository.service.internal.license.LicenseService.internalAssertLicense(LicenseService.java:1504)
+	at com.ibm.team.repository.service.internal.license.LicenseService.assertLicenseForContributor(LicenseService.java:3241)
+	at com.ibm.team.repository.service.internal.license.LicenseService.assertLicenseForContributor(LicenseService.java:1337)
+	at sun.reflect.GeneratedMethodAccessor684.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy904.assertLicenseForContributor(null)
+	at com.ibm.team.repository.service.internal.license.jts.JtsLicenseService.assertLicenseForContributor(JtsLicenseService.java:68)
+	at sun.reflect.GeneratedMethodAccessor684.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy907.assertLicenseForContributor(null)
+	at com.ibm.team.repository.service.internal.license.LicenseRestService.getAssertLicense(LicenseRestService.java:145)
+	at sun.reflect.GeneratedMethodAccessor740.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1049.getAssertLicense(null)
+	at sun.reflect.GeneratedMethodAccessor739.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.doModelledRestService(AbstractTeamServerServlet.java:602)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleRequest2(AbstractTeamServerServlet.java:2597)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleRequest(AbstractTeamServerServlet.java:2388)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.access$0(AbstractTeamServerServlet.java:2373)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet$1.service(AbstractTeamServerServlet.java:251)
+	at com.ibm.team.repository.service.internal.oauth.OAuthServiceProvider$2.run(OAuthServiceProvider.java:277)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleAuthentication(AbstractTeamServerServlet.java:2060)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.service(AbstractTeamServerServlet.java:1807)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at org.eclipse.equinox.http.registry.internal.ServletManager$ServletWrapper.service(ServletManager.java:180)
+	at org.eclipse.equinox.http.servlet.internal.ServletRegistration.service(ServletRegistration.java:61)
+	at org.eclipse.equinox.http.servlet.internal.ProxyServlet.processAlias(ProxyServlet.java:128)
+	at org.eclipse.equinox.http.servlet.internal.ProxyServlet.service(ProxyServlet.java:76)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at org.eclipse.equinox.servletbridge.BridgeServlet.service(BridgeServlet.java:152)
+	at com.ibm.team.repository.server.servletbridge.JazzServlet.service(JazzServlet.java:74)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1232)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:781)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:480)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.invokeTarget(WebAppFilterChain.java:136)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:97)
+	at com.ibm.team.repository.server.servletbridge.BridgeFilter.processDelegate(BridgeFilter.java:165)
+	at com.ibm.team.repository.server.servletbridge.BridgeFilter.doFilter(BridgeFilter.java:198)
+	at com.ibm.ws.webcontainer.filter.FilterInstanceWrapper.doFilter(FilterInstanceWrapper.java:195)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:91)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:967)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1107)
+	at com.ibm.ws.webcontainer.servlet.CacheServletWrapper.handleRequest(CacheServletWrapper.java:87)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:947)
+	at com.ibm.ws.webcontainer.WSWebContainer.handleRequest(WSWebContainer.java:1817)
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:200)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:463)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewRequest(HttpInboundLink.java:530)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.processRequest(HttpInboundLink.java:316)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.ready(HttpInboundLink.java:287)
+	at com.ibm.ws.ssl.channel.impl.SSLConnectionLink.determineNextChannel(SSLConnectionLink.java:1084)
+	at com.ibm.ws.ssl.channel.impl.SSLConnectionLink.readyInboundPostHandshake(SSLConnectionLink.java:732)
+	at com.ibm.ws.ssl.channel.impl.SSLConnectionLink$MyHandshakeCompletedCallback.complete(SSLConnectionLink.java:428)
+	at com.ibm.ws.ssl.channel.impl.SSLUtils.handleHandshake(SSLUtils.java:1138)
+	at com.ibm.ws.ssl.channel.impl.SSLHandshakeIOCallback.complete(SSLHandshakeIOCallback.java:87)
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:175)
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217)
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161)
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:138)
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:204)
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775)
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905)
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1892)
+	at com.ibm.team.repository.common.internal.marshal.util.MarshallerUtil.decodeExceptions(MarshallerUtil.java:369)
+	at com.ibm.team.repository.common.serialize.internal.JSONDeserializer.deserializeErrorObj(JSONDeserializer.java:957)
+	at com.ibm.team.repository.common.serialize.internal.JSONDeserializer.deserializeException(JSONDeserializer.java:933)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClient.createExceptionFromResponse(CrossServerHttpClient.java:802)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClient.checkResponse(CrossServerHttpClient.java:767)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClient.doCommunicate(CrossServerHttpClient.java:365)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClient.sendAsApplication(CrossServerHttpClient.java:274)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClientService.send(CrossServerHttpClientService.java:69)
+	at sun.reflect.GeneratedMethodAccessor520.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1107.send(null)
+	at com.ibm.team.repository.service.compatibility.AbstractCompatibilityService.send(AbstractCompatibilityService.java:55)
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicenseRemotely(LicenseService.java:202)
+	... 109 more
+
+!ENTRY com.ibm.team.filesystem.ide.ui 4 0 2017-08-10 15:22:24.816
+!MESSAGE Unable to obtain license to read SCM related data: An error response was received from the Jazz Team Server. Status=400.  Message: CRJAZ1848E To perform the &quot;com.ibm.team.scm.readaccess.general&quot; operation, the user (userid=&quot;sfk1j&quot;) must have one of the following licenses that are installed on the server: Rational Team Concert.Developer for IBM Enterprise Platforms, Rational Team Concert.Contributor-Floating, Rational Team Concert.Developer, CLM Server Monitoring.User. The server administrator can assign licenses..
+!STACK 0
+com.ibm.team.repository.common.LicenseNotGrantedException: Unable to obtain license to read SCM related data: An error response was received from the Jazz Team Server. Status=400.  Message: CRJAZ1848E To perform the &quot;com.ibm.team.scm.readaccess.general&quot; operation, the user (userid=&quot;sfk1j&quot;) must have one of the following licenses that are installed on the server: Rational Team Concert.Developer for IBM Enterprise Platforms, Rational Team Concert.Contributor-Floating, Rational Team Concert.Developer, CLM Server Monitoring.User. The server administrator can assign licenses..
+	at com.ibm.team.scm.service.internal.AbstractScmService.assertLicense(AbstractScmService.java:395)
+	at com.ibm.team.scm.service.internal.ScmService.refreshWorkspaces(ScmService.java:5070)
+	at sun.reflect.GeneratedMethodAccessor430.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1358.refreshWorkspaces(null)
+	at sun.reflect.GeneratedMethodAccessor430.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleMethod(AbstractTeamServerServlet.java:1504)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.executeMethod(AbstractTeamServerServlet.java:1057)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.doPost(AbstractTeamServerServlet.java:824)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:595)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleRequest2(AbstractTeamServerServlet.java:2600)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleRequest(AbstractTeamServerServlet.java:2388)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.service(AbstractTeamServerServlet.java:1836)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at org.eclipse.equinox.http.registry.internal.ServletManager$ServletWrapper.service(ServletManager.java:180)
+	at org.eclipse.equinox.http.servlet.internal.ServletRegistration.service(ServletRegistration.java:61)
+	at org.eclipse.equinox.http.servlet.internal.ProxyServlet.processAlias(ProxyServlet.java:128)
+	at org.eclipse.equinox.http.servlet.internal.ProxyServlet.service(ProxyServlet.java:76)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at org.eclipse.equinox.servletbridge.BridgeServlet.service(BridgeServlet.java:152)
+	at com.ibm.team.repository.server.servletbridge.JazzServlet.service(JazzServlet.java:74)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1232)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:781)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:480)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.invokeTarget(WebAppFilterChain.java:136)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:97)
+	at com.ibm.team.repository.server.servletbridge.BridgeFilter.processDelegate(BridgeFilter.java:165)
+	at com.ibm.team.repository.server.servletbridge.BridgeFilter.doFilter(BridgeFilter.java:198)
+	at com.ibm.ws.webcontainer.filter.FilterInstanceWrapper.doFilter(FilterInstanceWrapper.java:195)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:91)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:967)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1107)
+	at com.ibm.ws.webcontainer.servlet.CacheServletWrapper.handleRequest(CacheServletWrapper.java:87)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:947)
+	at com.ibm.ws.webcontainer.WSWebContainer.handleRequest(WSWebContainer.java:1817)
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:200)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:463)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewRequest(HttpInboundLink.java:530)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.processRequest(HttpInboundLink.java:316)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.ready(HttpInboundLink.java:287)
+	at com.ibm.ws.ssl.channel.impl.SSLConnectionLink.determineNextChannel(SSLConnectionLink.java:1084)
+	at com.ibm.ws.ssl.channel.impl.SSLConnectionLink$MyReadCompletedCallback.complete(SSLConnectionLink.java:658)
+	at com.ibm.ws.ssl.channel.impl.SSLReadServiceContext$SSLReadCompletedCallback.complete(SSLReadServiceContext.java:1820)
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:175)
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217)
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161)
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:138)
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:204)
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775)
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905)
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1892)
+	at com.ibm.team.repository.common.internal.marshal.util.MarshallerUtil.decodeExceptions(Unknown Source)
+	at com.ibm.team.repository.common.internal.marshal.util.MarshallerUtil.decodeExceptions(Unknown Source)
+	at com.ibm.team.repository.common.internal.marshal.util.MarshallerUtil.decodeFault(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.constructExceptionFromFault(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.executeMethod(Unknown Source)
+	at com.ibm.team.repository.transport.client.RemoteTeamService.invoke(Unknown Source)
+	at com.ibm.team.repository.transport.client.ServiceInvocationHandler.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy36.refreshWorkspaces(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invokeServiceCall(Unknown Source)
+	at com.ibm.team.repository.client.internal.ServiceInterfaceProxy.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy36.refreshWorkspaces(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.ibm.team.scm.client.internal.ScmServiceInterfaceProxy$2.run(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository$3.run(Unknown Source)
+	at com.ibm.team.repository.common.transport.CancelableCaller.call(Unknown Source)
+	at com.ibm.team.repository.client.internal.TeamRepository.callCancelableService(Unknown Source)
+	at com.ibm.team.scm.client.internal.ScmClientLibraryContext.callCancelableService(Unknown Source)
+	at com.ibm.team.scm.client.internal.ScmServiceInterfaceProxy.invokeCancelableService(Unknown Source)
+	at com.ibm.team.scm.client.internal.ScmServiceInterfaceProxy.invoke(Unknown Source)
+	at com.sun.proxy.$Proxy36.refreshWorkspaces(Unknown Source)
+	at com.ibm.team.scm.client.internal.WorkspaceManager.getWorkspaceConnection(Unknown Source)
+	at com.ibm.team.internal.filesystem.ui.wizards.join.NewWorkspaceSeedData.initialize(Unknown Source)
+	at com.ibm.team.internal.filesystem.ui.wizards.join.JoinWorkspaceNamePage$3.repositoryRun(Unknown Source)
+	at com.ibm.team.repository.rcp.ui.operations.RepositoryOperation.run(Unknown Source)
+	at com.ibm.team.repository.rcp.ui.operations.JobRunner.run(Unknown Source)
+	at com.ibm.team.repository.rcp.ui.operations.JobRunner$1.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Unknown Source)
+Caused by: com.ibm.team.repository.common.LicenseNotGrantedException: An error response was received from the Jazz Team Server. Status=400.  Message: CRJAZ1848E To perform the &quot;com.ibm.team.scm.readaccess.general&quot; operation, the user (userid=&quot;sfk1j&quot;) must have one of the following licenses that are installed on the server: Rational Team Concert.Developer for IBM Enterprise Platforms, Rational Team Concert.Contributor-Floating, Rational Team Concert.Developer, CLM Server Monitoring.User. The server administrator can assign licenses.
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicenseRemotely(LicenseService.java:205)
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicense(LicenseService.java:181)
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicenseForContributor(LicenseService.java:211)
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicense(LicenseService.java:491)
+	at sun.reflect.GeneratedMethodAccessor427.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1115.assertLicense(null)
+	at com.ibm.team.repository.service.internal.license.jts.JtsLicenseService.assertLicense(JtsLicenseService.java:38)
+	at sun.reflect.GeneratedMethodAccessor427.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1229.assertLicense(null)
+	at com.ibm.team.scm.service.internal.AbstractScmService.assertLicense(AbstractScmService.java:385)
+	... 92 more
+Caused by: com.ibm.team.repository.common.LicenseNotGrantedException: An error response was received from the Jazz Team Server. Status=400.  Message: CRJAZ1848E To perform the &quot;com.ibm.team.scm.readaccess.general&quot; operation, the user (userid=&quot;sfk1j&quot;) must have one of the following licenses that are installed on the server: Rational Team Concert.Developer for IBM Enterprise Platforms, Rational Team Concert.Contributor-Floating, Rational Team Concert.Developer, CLM Server Monitoring.User. The server administrator can assign licenses.
+	at com.ibm.team.repository.service.internal.license.LicenseState$AssertLicenseExceptionReporter.report(LicenseState.java:1694)
+	at com.ibm.team.repository.service.internal.license.LicenseState.assertLicenseImpl(LicenseState.java:1065)
+	at com.ibm.team.repository.service.internal.license.LicenseState.assertLicense(LicenseState.java:909)
+	at com.ibm.team.repository.service.internal.license.LicenseService.internalAssertLicense2(LicenseService.java:1594)
+	at com.ibm.team.repository.service.internal.license.LicenseService.internalAssertLicense(LicenseService.java:1504)
+	at com.ibm.team.repository.service.internal.license.LicenseService.assertLicenseForContributor(LicenseService.java:3241)
+	at com.ibm.team.repository.service.internal.license.LicenseService.assertLicenseForContributor(LicenseService.java:1337)
+	at sun.reflect.GeneratedMethodAccessor684.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy904.assertLicenseForContributor(null)
+	at com.ibm.team.repository.service.internal.license.jts.JtsLicenseService.assertLicenseForContributor(JtsLicenseService.java:68)
+	at sun.reflect.GeneratedMethodAccessor684.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy907.assertLicenseForContributor(null)
+	at com.ibm.team.repository.service.internal.license.LicenseRestService.getAssertLicense(LicenseRestService.java:145)
+	at sun.reflect.GeneratedMethodAccessor740.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1049.getAssertLicense(null)
+	at sun.reflect.GeneratedMethodAccessor739.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.doModelledRestService(AbstractTeamServerServlet.java:602)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleRequest2(AbstractTeamServerServlet.java:2597)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleRequest(AbstractTeamServerServlet.java:2388)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.access$0(AbstractTeamServerServlet.java:2373)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet$1.service(AbstractTeamServerServlet.java:251)
+	at com.ibm.team.repository.service.internal.oauth.OAuthServiceProvider$2.run(OAuthServiceProvider.java:277)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.handleAuthentication(AbstractTeamServerServlet.java:2060)
+	at com.ibm.team.repository.servlet.AbstractTeamServerServlet.service(AbstractTeamServerServlet.java:1807)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at org.eclipse.equinox.http.registry.internal.ServletManager$ServletWrapper.service(ServletManager.java:180)
+	at org.eclipse.equinox.http.servlet.internal.ServletRegistration.service(ServletRegistration.java:61)
+	at org.eclipse.equinox.http.servlet.internal.ProxyServlet.processAlias(ProxyServlet.java:128)
+	at org.eclipse.equinox.http.servlet.internal.ProxyServlet.service(ProxyServlet.java:76)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at org.eclipse.equinox.servletbridge.BridgeServlet.service(BridgeServlet.java:152)
+	at com.ibm.team.repository.server.servletbridge.JazzServlet.service(JazzServlet.java:74)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1232)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:781)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:480)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.invokeTarget(WebAppFilterChain.java:136)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:97)
+	at com.ibm.team.repository.server.servletbridge.BridgeFilter.processDelegate(BridgeFilter.java:165)
+	at com.ibm.team.repository.server.servletbridge.BridgeFilter.doFilter(BridgeFilter.java:198)
+	at com.ibm.ws.webcontainer.filter.FilterInstanceWrapper.doFilter(FilterInstanceWrapper.java:195)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:91)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:967)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1107)
+	at com.ibm.ws.webcontainer.servlet.CacheServletWrapper.handleRequest(CacheServletWrapper.java:87)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:947)
+	at com.ibm.ws.webcontainer.WSWebContainer.handleRequest(WSWebContainer.java:1817)
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:200)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:463)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewRequest(HttpInboundLink.java:530)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.processRequest(HttpInboundLink.java:316)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.ready(HttpInboundLink.java:287)
+	at com.ibm.ws.ssl.channel.impl.SSLConnectionLink.determineNextChannel(SSLConnectionLink.java:1084)
+	at com.ibm.ws.ssl.channel.impl.SSLConnectionLink.readyInboundPostHandshake(SSLConnectionLink.java:732)
+	at com.ibm.ws.ssl.channel.impl.SSLConnectionLink$MyHandshakeCompletedCallback.complete(SSLConnectionLink.java:428)
+	at com.ibm.ws.ssl.channel.impl.SSLUtils.handleHandshake(SSLUtils.java:1138)
+	at com.ibm.ws.ssl.channel.impl.SSLHandshakeIOCallback.complete(SSLHandshakeIOCallback.java:87)
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:175)
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217)
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161)
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:138)
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:204)
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775)
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905)
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1892)
+	at com.ibm.team.repository.common.internal.marshal.util.MarshallerUtil.decodeExceptions(MarshallerUtil.java:369)
+	at com.ibm.team.repository.common.serialize.internal.JSONDeserializer.deserializeErrorObj(JSONDeserializer.java:957)
+	at com.ibm.team.repository.common.serialize.internal.JSONDeserializer.deserializeException(JSONDeserializer.java:933)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClient.createExceptionFromResponse(CrossServerHttpClient.java:802)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClient.checkResponse(CrossServerHttpClient.java:767)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClient.doCommunicate(CrossServerHttpClient.java:365)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClient.sendAsApplication(CrossServerHttpClient.java:274)
+	at com.ibm.team.repository.service.compatibility.util.http.CrossServerHttpClientService.send(CrossServerHttpClientService.java:69)
+	at sun.reflect.GeneratedMethodAccessor520.invoke(null)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:507)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.invoke(ExportProxyServiceRecord.java:361)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord.access$0(ExportProxyServiceRecord.java:347)
+	at org.eclipse.soda.sat.core.internal.record.ExportProxyServiceRecord$ExportedServiceInvocationHandler.invoke(ExportProxyServiceRecord.java:56)
+	at com.sun.proxy.$Proxy1107.send(null)
+	at com.ibm.team.repository.service.compatibility.AbstractCompatibilityService.send(AbstractCompatibilityService.java:55)
+	at com.ibm.team.repository.service.compatibility.license.internal.LicenseService.assertLicenseRemotely(LicenseService.java:202)
+	... 111 more
+
+!ENTRY com.ibm.datatools.core.http 1 0 2017-08-10 16:25:06.780
+!MESSAGE Embedded HTTP server stopped

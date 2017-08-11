@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://com.ibm.team.workitem.editor/quickinformation" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.workitem.editor/quickinformation">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:element name="presentation">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" name="property">
+					<xsd:complexType>
+						<xsd:attribute name="key" type="xsd:string" use="required"/>
+						<xsd:attribute name="value" type="xsd:string" use="required"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+            <xsd:attribute name="kind" type="xsd:string" use="required"/>
+            <xsd:attribute name="title" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="quickinformationConfiguration">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="quickinformationConfiguration">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element ref="presentation" maxOccurs="unbounded" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="id" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.editor.configuration.quickinformationconfiguration" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="quickinformationConfiguration"/>
+	</xsd:schema>

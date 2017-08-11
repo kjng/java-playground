@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://com.ibm.team.tpt/financial" xmlns:process="http://com.ibm.team.process" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.tpt/financial">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="financialData">
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="default" type="xsd:string"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="currencyDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="1" minOccurs="1">
+						<xsd:element name="currencies">
+							<xsd:complexType>
+                                <xsd:sequence>
+									<xsd:element name="currency" type="financialData" minOccurs="1" maxOccurs="unbounded"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute fixed="currency" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="financialItemDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence maxOccurs="1" minOccurs="1">
+					<xsd:element name="configuration" type="currencyDataType"/>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.tpt.configuration" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="financialItemDataType"/>
+</xsd:schema>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.team.workitem/impliedAttributesAdvisor" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.workitem/impliedAttributesAdvisor">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="impliedAttributesAdvisorType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="features">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="unbounded" minOccurs="0" name="feature">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element maxOccurs="unbounded" minOccurs="0" name="properties">
+												<xsd:complexType>
+													<xsd:sequence>
+														<xsd:element maxOccurs="unbounded" minOccurs="0" name="property">
+															<xsd:complexType>
+																<xsd:attribute name="id" type="xsd:string" use="required"/>
+															</xsd:complexType>
+														</xsd:element>
+	         			     						</xsd:sequence>
+													<xsd:attribute name="workItemType" type="xsd:string" use="optional"/>
+													<xsd:attribute name="workItemTypeCategory" type="xsd:string" use="optional"/>
+												</xsd:complexType>
+											</xsd:element>
+	              						</xsd:sequence>
+										<xsd:attribute name="skipIfSameOwner" type="xsd:boolean" use="optional"/>
+	              						<xsd:attribute name="id" type="featureType" use="required"/>
+									</xsd:complexType>
+								</xsd:element>
+              				</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.advisor.impliedAttributes" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:simpleType final="#all" name="featureType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="unassignOnAreaChange"/>
+			<xsd:enumeration value="assignOnStartWorking"/>
+			<xsd:enumeration value="assignOnResolve"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="impliedAttributesAdvisorType"/>
+</xsd:schema>

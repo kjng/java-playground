@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema 
+	xmlns="http://com.ibm.team.apt.configuration/planScripts" 
+	xmlns:process="http://com.ibm.team.process" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	attributeFormDefault="unqualified" 
+	elementFormDefault="qualified" 
+	targetNamespace="http://com.ibm.team.apt.configuration/planScripts">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="editor-configuration">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="unbounded" minOccurs="1">
+						<xsd:element name="planscript" type="script-reference" />
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.apt.configuration.planscripts" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="script-reference">
+		<xsd:attribute name="source" type="xsd:string" use="required" />
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="editor-configuration"/>
+</xsd:schema>

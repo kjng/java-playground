@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.workitem.editor/workitemTypeEditorIdBinding"
+	targetNamespace="http://com.ibm.team.workitem.editor/workitemTypeEditorIdBinding"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="workitemTypeEditorIdBindingDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="workitemTypeEditorIdBinding">
+							<xsd:complexType>
+								<xsd:attribute name="workitemType" type="xsd:string" use="required"/>
+								<xsd:attribute name="editorId" type="xsd:string" use="required"/>
+								<xsd:attribute name="target" type="xsd:string" use="optional"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.editor.configuration.workitemTypeEditorIdBinding" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="workitemTypeEditorIdBindingDataType"/>
+</xsd:schema>

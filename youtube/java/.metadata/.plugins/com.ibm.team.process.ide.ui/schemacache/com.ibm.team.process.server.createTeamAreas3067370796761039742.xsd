@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.process/createTeamAreas"
+	targetNamespace="http://com.ibm.team.process/createTeamAreas"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="createTeamAreas">
+		<xsd:complexContent>
+			<xsd:restriction base="process:followupActionType">
+				<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+					<xsd:element name="teamArea">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element ref="teamArea" minOccurs="0" maxOccurs="unbounded" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+							<xsd:attribute name="timeline" type="xsd:string" use="optional" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.process.server.createTeamAreas" />
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="teamArea" type="teamAreaType"/>
+	
+	<xsd:complexType name="teamAreaType">
+		<xsd:sequence>
+			<xsd:element ref="teamArea" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:element name="followup-action" substitutionGroup="process:followup-action" type="createTeamAreas"/>
+</xsd:schema>

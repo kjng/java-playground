@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://com.ibm.team.enterprise.process/configurationData"
+   targetNamespace="http://com.ibm.team.enterprise.process/configurationData"
+   xmlns:process="http://com.ibm.team.process"
+   attributeFormDefault="unqualified" elementFormDefault="qualified">
+   
+   <xsd:import namespace="http://com.ibm.team.process" 
+      schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+   
+   <xsd:complexType name="resultWorkItem">
+       <xsd:complexContent>
+           <xsd:restriction base="process:configurationDataType">
+                 <xsd:sequence maxOccurs="1" minOccurs="0">
+					<xsd:element name="resultWorkItem">
+						<xsd:complexType>
+						    <xsd:attribute name="disable" type="xsd:boolean" use="required"/>
+							<xsd:attribute name="workItemTypeId" type="xsd:string"/>
+							<xsd:attribute name="workItemFiledAgainst" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+           </xsd:restriction>
+       </xsd:complexContent>
+   </xsd:complexType>
+   
+   <xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="resultWorkItem"/>
+</xsd:schema>

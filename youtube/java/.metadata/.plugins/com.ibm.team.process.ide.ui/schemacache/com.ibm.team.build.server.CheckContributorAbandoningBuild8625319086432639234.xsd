@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://com.ibm.team.process/checkContributorAbandoningBuild"
+   targetNamespace="http://com.ibm.team.process/checkContributorAbandoningBuild"
+   xmlns:process="http://com.ibm.team.process"
+   attributeFormDefault="unqualified" elementFormDefault="qualified">
+   
+   <xsd:import namespace="http://com.ibm.team.process" 
+      schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+   
+   <xsd:complexType name="checkContributorAbandoningBuild">
+      <xsd:complexContent>
+         <xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+				    <xsd:element name="allow" maxOccurs="2" minOccurs="1">
+				     	<xsd:complexType>
+				     		<xsd:attribute name="abandoner" type="abandonerType" use="required"/>
+				     	</xsd:complexType>
+				    </xsd:element>
+				</xsd:sequence>
+            <xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.build.server.CheckContributorAbandoningBuild"/>
+         </xsd:restriction>
+      </xsd:complexContent>
+   </xsd:complexType>
+   
+	<xsd:simpleType name="abandonerType" final="#all">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="requester"/>
+			<xsd:enumeration value="team"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+   
+   <xsd:element name="precondition" substitutionGroup="process:precondition" type="checkContributorAbandoningBuild"/>
+</xsd:schema>

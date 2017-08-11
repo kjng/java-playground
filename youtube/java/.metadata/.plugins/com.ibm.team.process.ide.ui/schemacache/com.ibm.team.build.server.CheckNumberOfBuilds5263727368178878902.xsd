@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://com.ibm.team.process/checkNumberOfBuilds"
+   targetNamespace="http://com.ibm.team.process/checkNumberOfBuilds"
+   xmlns:process="http://com.ibm.team.process"
+   attributeFormDefault="unqualified" elementFormDefault="qualified">
+   
+   <xsd:import namespace="http://com.ibm.team.process" 
+      schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+   
+   <xsd:complexType name="checkNumberOfBuilds">
+      <xsd:complexContent>
+         <xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+				    <xsd:element name="allow" maxOccurs="1" minOccurs="1">
+				     	<xsd:complexType>
+				     		<xsd:attribute name="maximumBuilds" type="maximumBuilds" use="required"/>
+				     	</xsd:complexType>
+				    </xsd:element>
+				</xsd:sequence>
+            <xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.build.server.CheckNumberOfBuilds"/>
+         </xsd:restriction>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:simpleType name="maximumBuilds" final="#all">
+		<xsd:restriction base="xsd:unsignedInt">
+    		<xsd:minInclusive value="1"/>
+		</xsd:restriction>
+    </xsd:simpleType>
+    
+   <xsd:element name="precondition" substitutionGroup="process:precondition" type="checkNumberOfBuilds"/>
+ </xsd:schema>

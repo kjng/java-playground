@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.process/server/requireWorkItem"
+	targetNamespace="http://com.ibm.team.process/server/requireWorkItem"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="requireWorkItemType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+					<xsd:element name="requires" maxOccurs="1" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+							    <xsd:element name="workitem" maxOccurs="1" minOccurs="0">
+							     	<xsd:complexType>
+							     		<xsd:attribute name="target" type="targetType" use="required"/>
+							     		<xsd:attribute name="owner" type="ownerType" use="required"/>
+							     	</xsd:complexType>
+							    </xsd:element>
+							</xsd:sequence>
+							<xsd:attribute name="value" type="requirementType" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+
+				<xsd:attribute name="id" use="required">
+					<xsd:simpleType>
+                    	<xsd:restriction base="xsd:string">
+                        	<xsd:enumeration value="com.ibm.team.process.deliver.server.requireWorkItem"/>
+                            <xsd:enumeration value="com.ibm.team.process.deliver.server.deltaRequireWorkItem"/>
+						</xsd:restriction>
+                    </xsd:simpleType>
+				</xsd:attribute>
+				
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="requirementType" final="#all">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="comment"/>
+			<xsd:enumeration value="workitem"/>
+			<xsd:enumeration value="workitem-or-comment"/>
+			<xsd:enumeration value="workitem-and-comment"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="targetType" final="#all">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="required"/>
+			<xsd:enumeration value="optional"/>
+			<xsd:enumeration value="current-iteration"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ownerType" final="#all">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="required"/>
+			<xsd:enumeration value="optional"/>
+			<xsd:enumeration value="current-contributor"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="requireWorkItemType"/>
+</xsd:schema>

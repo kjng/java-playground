@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema 
+	xmlns="http://com.ibm.team.apt.configuration/planModes" 
+	xmlns:process="http://com.ibm.team.process" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	attributeFormDefault="unqualified" 
+	elementFormDefault="qualified" 
+	targetNamespace="http://com.ibm.team.apt.configuration/planModes">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="planMode-configuration"/>
+	
+	<xsd:complexType name="planMode-configuration">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:choice maxOccurs="unbounded" minOccurs="1">
+					<xsd:element name="planmode" type="planMode-definition" />
+				</xsd:choice>
+				<xsd:attribute fixed="com.ibm.team.apt.configuration.planmodes" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="planMode-definition">
+		<xsd:choice maxOccurs="unbounded" minOccurs="1">
+			<xsd:element name="viewmode" type="configuration-reference" minOccurs="1"/>
+			<xsd:element name="groupmode" type="configuration-reference" minOccurs="1"/>
+			<xsd:element name="sortmode" type="configuration-reference" minOccurs="1"/>
+			<xsd:element name="filters" minOccurs="1">
+				<xsd:complexType>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="filter" type="configuration-reference" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="colors" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+						<xsd:element name="color">
+							<xsd:complexType>
+								<xsd:attribute name="label" type="xsd:string" use="required"/>
+								<xsd:attribute name="expression" type="xsd:string" use="required"/>
+								<xsd:attribute name="value" type="colorValueType" use="required"/>
+								<xsd:attribute name="priority" type="xsd:integer" use="required"/>
+								<xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="columns" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+						<xsd:element name="column">
+							<xsd:complexType>
+								<xsd:sequence minOccurs="0" maxOccurs="1">
+									<xsd:element name="parameters" type="parameters-reference"></xsd:element>
+								</xsd:sequence>
+								<xsd:attribute name="attribute" type="xsd:string" use="required"/>
+								<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
+								<xsd:attribute name="width" type="xsd:integer" use="optional"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="size" type="sizeValueType" use="optional"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="checks" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+						<xsd:element name="check">
+							<xsd:complexType>
+								<xsd:attribute name="attribute" type="xsd:string" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="progressMode" type="xsd:string" use="optional"/>
+		<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="configuration-reference">
+		<xsd:sequence minOccurs="0" maxOccurs="1">
+			<xsd:element name="parameters" type="parameters-reference"></xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="definition" type="xsd:string" use="required" />
+		<xsd:attribute name="optional" type="xsd:boolean" use="optional" />
+	</xsd:complexType>
+
+	<xsd:complexType name="parameters-reference">
+		<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+			<xsd:element name="parameter" type="parameter-reference"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="parameter-reference">
+		<xsd:attribute name="key" type="xsd:string" use="required" />
+		<xsd:attribute name="value" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<xsd:simpleType name="colorValueType">
+		<xsd:restriction base="xsd:string">
+	 		 <xsd:pattern value="#[a-fA-F0-9]{6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="sizeValueType">
+		<xsd:restriction base="xsd:string">
+	 		 <xsd:pattern value="[*+?]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

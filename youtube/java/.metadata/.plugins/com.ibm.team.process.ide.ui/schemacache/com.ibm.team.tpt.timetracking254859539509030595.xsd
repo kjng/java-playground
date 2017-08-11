@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://com.ibm.team.tpt/timetracking" 
+	xmlns="http://com.ibm.team.tpt/timetracking" 
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" 	 
+	elementFormDefault="qualified">
+
+<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+
+<xsd:complexType name="timecodeDataType">
+	<xsd:sequence>
+		<xsd:choice maxOccurs="1" minOccurs="1">
+			<xsd:element name="timecodes">
+				<xsd:complexType>
+                    <xsd:sequence>
+						<xsd:element name="timecode" minOccurs="1" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:attribute name="id" type="xsd:string" use="required"/>
+								<xsd:attribute name="name" type="xsd:string" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:sequence>
+		<xsd:attribute fixed="timecode" name="id" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+<xsd:complexType name="timeTrackingDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>					
+					<xsd:element name="timeTrackingSpecification" maxOccurs="1" minOccurs="1">
+						<xsd:complexType>
+							<xsd:attribute
+								name="syncTimeSpentWithTimeTracking" type="xsd:boolean"
+								use="required" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="timeTrackingPermission" maxOccurs="1" minOccurs="0">
+						<xsd:complexType>
+							<xsd:attribute
+								name="allowOnlyOwnersToAddTimeTracking" type="xsd:boolean"
+								use="required" />
+						</xsd:complexType>
+					</xsd:element>	
+					<xsd:element name="configuration" type="timecodeDataType" maxOccurs="unbounded" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:restriction>
+		</xsd:complexContent>
+</xsd:complexType>
+
+
+<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="timeTrackingDataType"/>
+</xsd:schema>

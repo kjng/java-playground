@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.workitem.editor/presentations"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified"
+	targetNamespace="http://com.ibm.team.workitem.editor/presentations">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:element name="presentation">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" name="property">
+					<xsd:complexType>
+						<xsd:attribute name="key" type="xsd:string" use="required"/>
+						<xsd:attribute name="value" type="xsd:string" use="required"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:string" />
+			<xsd:attribute name="attributeId" type="xsd:string"/>
+			<xsd:attribute name="kind" type="xsd:string"/>
+			<xsd:attribute name="label" type="xsd:string"/>
+			<xsd:attribute name="description" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="tab">
+		<xsd:complexType>
+            <xsd:sequence>
+     		   <xsd:element maxOccurs="unbounded" minOccurs="0" name="property">
+		          <xsd:complexType>
+		            <xsd:attribute name="key" type="xsd:string" use="required"/>
+		            <xsd:attribute name="value" type="xsd:string" use="required"/>
+        		  </xsd:complexType>
+		        </xsd:element>
+		      </xsd:sequence>
+            <xsd:attribute name="tabId" type="xsd:string" use="required"/>
+            <xsd:attribute name="title" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="section">
+		<xsd:complexType>
+            <xsd:sequence>
+     		   <xsd:element maxOccurs="unbounded" minOccurs="0" name="property">
+		          <xsd:complexType>
+		            <xsd:attribute name="key" type="xsd:string" use="required"/>
+		            <xsd:attribute name="value" type="xsd:string" use="required"/>
+        		  </xsd:complexType>
+		        </xsd:element>
+		      </xsd:sequence>
+            <xsd:attribute name="sectionId" type="xsd:string" use="required"/>
+            <xsd:attribute name="title" type="xsd:string" use="required"/>
+      		<xsd:attribute name="slot" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="presentationsDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="editor">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element ref="tab" maxOccurs="unbounded" minOccurs="0"/>
+								</xsd:sequence>
+								<xsd:attribute name="id" type="xsd:string" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="tab">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element ref="section" maxOccurs="unbounded" minOccurs="0" />
+	            			  	</xsd:sequence>
+								<xsd:attribute name="id" type="xsd:string" use="required"/>
+								<xsd:attribute name="layout" type="xsd:string" />
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="section">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element ref="presentation" maxOccurs="unbounded" minOccurs="0"/>
+	            			  </xsd:sequence>
+							  <xsd:attribute name="id" type="xsd:string" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.editor.configuration.presentations" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="presentationsDataType"/>
+</xsd:schema>

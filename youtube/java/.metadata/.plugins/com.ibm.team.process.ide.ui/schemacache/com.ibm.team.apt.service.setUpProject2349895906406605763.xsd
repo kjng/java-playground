@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:process="http://com.ibm.team.process"
+	xmlns="http://com.ibm.team.apt/setUpProject"
+	targetNamespace="http://com.ibm.team.apt/setUpProject"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:element name="followup-action" substitutionGroup="process:followup-action" type="setUpProjectType"/>
+	
+	<xsd:complexType name="setUpProjectType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:followupActionType">
+				<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+					<xsd:choice>
+						<xsd:element ref="plans"/>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.apt.service.setUpProject"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="plans">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:choice>
+					<xsd:element name="plan">
+						<xsd:complexType>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+							<xsd:attribute name="typeId" type="xsd:string" use="required"/>
+							<xsd:attribute name="ownerPath" type="xsd:string" use="optional"/>
+							<xsd:attribute name="iterationPath" type="xsd:string" use="required"/>
+							<xsd:attribute name="alwaysLoadExecutionItems" type="xsd:boolean" use="optional"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.workitem/templates"
+	targetNamespace="http://com.ibm.team.workitem/templates"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="templatesDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:element name="template" maxOccurs="unbounded" minOccurs="0">
+						<xsd:complexType>
+							<xsd:attribute name="identifier" type="xsd:string" use="required"/>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+							<xsd:attribute name="description" type="xsd:string" use="optional"/>
+							<xsd:attribute name="content" type="xsd:anyURI" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.workitem.configuration.templates"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="templatesDataType"/>
+</xsd:schema>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.workitem/requiredApprovals"
+	targetNamespace="http://com.ibm.team.workitem/requiredApprovals"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="requiredApprovalsType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="approval" maxOccurs="unbounded" minOccurs="0">
+							<xsd:complexType>
+								<xsd:attribute name="stateId" type="xsd:string" use="required"/>
+								<xsd:attribute name="workItemType" type="xsd:string" use="required"/>
+								<xsd:attribute name="approvalType" type="xsd:string" use="required"/>
+								<xsd:attribute name="approvalState" type="xsd:string" use="optional"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>	
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.workitem.advisor.requiredProperties"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="requiredPropertiesType"/>
+</xsd:schema>

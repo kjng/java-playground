@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema 
+	xmlns="http://com.ibm.team.apt.configuration/planItems" 
+	xmlns:process="http://com.ibm.team.process" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	attributeFormDefault="unqualified" 
+	elementFormDefault="qualified" 
+	targetNamespace="http://com.ibm.team.apt.configuration/planTypes">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="planType-configuration"/>
+	
+	<xsd:complexType name="planType-configuration">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:choice maxOccurs="unbounded" minOccurs="1">
+					<xsd:element name="plantype" type="planType-definition" />
+				</xsd:choice>
+				<xsd:attribute fixed="com.ibm.team.apt.configuration.plantypes" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="planType-definition">
+		<xsd:choice maxOccurs="unbounded" minOccurs="1">
+			<xsd:element name="planitems" type="configuration-reference" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="scheduler" type="configuration-reference" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="planchecks" minOccurs="1">
+				<xsd:complexType>
+					<xsd:choice maxOccurs="unbounded" minOccurs="1">
+						<xsd:element name="plancheck" type="configuration-reference" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="planmodes" minOccurs="1">
+				<xsd:complexType>
+					<xsd:choice maxOccurs="unbounded" minOccurs="1">
+						<xsd:element name="planmode" type="configuration-reference" />
+					</xsd:choice>
+					<xsd:attribute name="default" type="xsd:string" use="optional"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="icon" type="xsd:anyURI" use="optional"/>
+		<xsd:attribute name="deprecated" type="xsd:string" use="optional"/>
+		<xsd:attribute name="customIterationAttribute" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="configuration-reference">
+		<xsd:attribute name="definition" type="xsd:string" use="required" />
+	</xsd:complexType>
+	
+</xsd:schema>

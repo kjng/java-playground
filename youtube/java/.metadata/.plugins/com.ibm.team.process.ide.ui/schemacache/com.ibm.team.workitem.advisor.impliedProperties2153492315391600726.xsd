@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.workitem/impliedPropertiesAdvisor"
+	targetNamespace="http://com.ibm.team.workitem/impliedPropertiesAdvisor"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="impliedPropertiesAdvisorType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+					<xsd:element name="features" maxOccurs="unbounded" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="feature" maxOccurs="unbounded" minOccurs="0">
+									<xsd:complexType>
+										<xsd:attribute name="id" type="featureType" use="required"/>
+									</xsd:complexType>
+								</xsd:element>
+              						</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.workitem.advisor.impliedProperties"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:simpleType name="featureType" final="#all">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="unassignOnAreaChange"/>
+			<xsd:enumeration value="assignOnStartWorking"/>
+			<xsd:enumeration value="assignOnResolve"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="impliedPropertiesAdvisorType"/>
+</xsd:schema>

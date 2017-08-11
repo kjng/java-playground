@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ Licensed Materials - Property of IBM
+ Copyright IBM Corporation 2012. All Rights Reserved. 
+ 
+ Note to U.S. Government Users Restricted Rights:  Use, duplication or
+ disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+-->
+<xsd:schema xmlns="http://com.ibm.team.process/teamInvitation" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.process/teamInvitation">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSpecification.xsd"/>
+
+	<xsd:complexType name="teamInvitationType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:element name="emailSubject" maxOccurs="1" minOccurs="1">
+	                    <xsd:complexType>
+	                        <xsd:attribute name="value" type="xsd:string" use="required"/>
+	                    </xsd:complexType>
+                    </xsd:element>
+					<xsd:element name="emailBody" maxOccurs="1" minOccurs="1">
+	                    <xsd:complexType>
+	                        <xsd:attribute name="value" type="xsd:string" use="required"/>
+	                    </xsd:complexType>
+                    </xsd:element>
+					<xsd:element name="copySelf" maxOccurs="1" minOccurs="1">
+	                    <xsd:complexType>
+	                        <xsd:attribute name="value" type="xsd:boolean" use="required"/>
+	                    </xsd:complexType>
+                    </xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.process.service.configurationData.teamInvitation"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="teamInvitationType"/>
+</xsd:schema>

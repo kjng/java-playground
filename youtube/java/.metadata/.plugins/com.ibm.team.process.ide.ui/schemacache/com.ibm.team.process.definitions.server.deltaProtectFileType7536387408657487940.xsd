@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.process/server/protectFileType" xmlns="http://com.ibm.team.process/server/protectFileType" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+    <xsd:simpleType name="uuidType">
+    <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[-_a-zA-Z0-9]{23}"/>
+    </xsd:restriction>
+    </xsd:simpleType>
+            
+
+    <xsd:complexType name="ProtectFileTypeAdvisor">
+    	<xsd:complexContent>
+    		<xsd:extension base="process:preconditionType">
+    			<xsd:attribute name="mode" type="xsd:string" />
+    		</xsd:extension>
+    	</xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="VersionableMatchRule">
+    	<xsd:attribute name="matchAll" type="xsd:boolean"/>
+    	<xsd:attribute name="matchAddition" type="xsd:boolean"/>
+    	<xsd:attribute name="matchDelete" type="xsd:boolean"/>
+    	<xsd:attribute name="matchModify" type="xsd:boolean"/>
+    	<xsd:attribute name="matchRename" type="xsd:boolean"/>
+    	<xsd:attribute name="matchMove" type="xsd:boolean"/>
+    </xsd:complexType>
+    
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="ProtectFileTypeAdvisor"/>
+
+
+	<xsd:complexType name="ProtectFileTypeBase">
+		<xsd:complexContent>
+			<xsd:extension base="process:preconditionType"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="ModeType">
+		<xsd:attribute name="value" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+</xsd:schema>

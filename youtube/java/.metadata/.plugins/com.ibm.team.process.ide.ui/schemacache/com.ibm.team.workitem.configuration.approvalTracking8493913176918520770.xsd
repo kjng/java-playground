@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.workitem/approvalTracking"
+	targetNamespace="http://com.ibm.team.workitem/approvalTracking"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="approvalTrackingDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="approvalTracking">
+							<xsd:complexType>
+								<xsd:attribute name="approvalType" type="xsd:string" use="required"/>
+								<xsd:attribute name="approvalTarget" type="xsd:string" use="required"/>
+								<xsd:attribute name="workflowId" type="xsd:string" use="required"/>
+								<xsd:attribute name="workflowAction" type="xsd:string" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.configuration.approvalTracking" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="approvalTrackingDataType"/>
+</xsd:schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://com.ibm.team.apt/workResourcesSpecification" xmlns:process="http://com.ibm.team.process" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.apt/workResourcesSpecification">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="workResourcesSpecificationDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="1" minOccurs="0">
+						<xsd:element name="workResourcesSpecification">
+							<xsd:complexType>
+                                <xsd:sequence maxOccurs="1" minOccurs="0">
+                  					<xsd:element name="workingDaysSpecification">
+                    					<xsd:complexType>
+											<xsd:attribute name="monday" type="xsd:boolean" use="optional"/>											
+											<xsd:attribute name="tuesday" type="xsd:boolean" use="optional"/>											
+											<xsd:attribute name="wednesday" type="xsd:boolean" use="optional"/>											
+											<xsd:attribute name="thursday" type="xsd:boolean" use="optional"/>											
+											<xsd:attribute name="friday" type="xsd:boolean" use="optional"/>											
+											<xsd:attribute name="saturday" type="xsd:boolean" use="optional"/>											
+											<xsd:attribute name="sunday" type="xsd:boolean" use="optional"/>
+                    					</xsd:complexType>
+                  					</xsd:element>
+                				</xsd:sequence>
+                                <xsd:attribute name="workHours" type="xsd:decimal" use="required"/>
+								<xsd:attribute name="workMinutes" type="xsd:decimal" use="optional"/>
+								<xsd:attribute name="workDays" type="xsd:decimal" use="required"/>
+								<xsd:attribute name="quittingTime" type="xsd:time" use="optional"/>
+								<xsd:attribute name="disallowAllocationBySelf" type="xsd:boolean" use="optional"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.apt.configuration.workResourcesSpecification" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="workResourcesSpecificationDataType"/>
+</xsd:schema>

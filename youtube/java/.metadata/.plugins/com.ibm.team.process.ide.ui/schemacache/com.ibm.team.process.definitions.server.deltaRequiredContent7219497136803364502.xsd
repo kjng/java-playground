@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.process/server/requireContent"
+	targetNamespace="http://com.ibm.team.process/server/requireContent"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="requireContentType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">
+				<xsd:all minOccurs="0">
+					<xsd:element name="filePattern">
+						<xsd:complexType>
+							<xsd:attribute name="pattern" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="requiredText">
+						<xsd:complexType>
+							<xsd:attribute name="text" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="insertText" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:attribute name="text" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="components" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="component" minOccurs="0" maxOccurs="unbounded">
+									<xsd:complexType>
+										<xsd:attribute name="name" type="xsd:string" use="required"/>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:all>
+				
+				<xsd:attribute name="id" use="required">
+					<xsd:simpleType>
+                    	<xsd:restriction base="xsd:string">
+                        	<xsd:enumeration value="com.ibm.team.process.definitions.server.deltaRequiredContent"/>
+                            <xsd:enumeration value="com.ibm.team.process.definitions.server.requiredContent"/>
+						</xsd:restriction>
+                    </xsd:simpleType>
+				</xsd:attribute>
+				
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="requireContentType"/>
+</xsd:schema>

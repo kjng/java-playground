@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.process/createInvitationWorkItems"
+	targetNamespace="http://com.ibm.team.process/createInvitationWorkItems"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="createInvitationWorkItemsType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:followupActionType">
+				<xsd:sequence minOccurs="0" maxOccurs="1">
+					<xsd:element ref="workitems"/>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.process.definitions.server.createInvitationWorkItems"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="workitems">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="workitem">
+					<xsd:complexType>
+						<xsd:attribute name="type" type="xsd:string" use="optional"/>
+						<!-- categoryPath is of the form: parentCategory/subCategory/subCategory !-->
+						<xsd:attribute name="categoryPath" type="xsd:string" use="optional"/>
+						<xsd:attribute name="summary" type="xsd:string" use="required"/>
+						<xsd:attribute name="description" type="xsd:string" use="optional"/>
+						<xsd:attribute name="htmlDescription" type="xsd:string" use="optional"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="followup-action" substitutionGroup="process:followup-action" type="createInvitationWorkItemsType"/>
+</xsd:schema>

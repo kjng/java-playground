@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			xmlns="http://com.ibm.team.dashboard/entries" 
+			xmlns:process="http://com.ibm.team.process"
+			attributeFormDefault="unqualified" 
+			elementFormDefault="qualified" 
+			targetNamespace="http://com.ibm.team.dashboard/entries">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+
+   	<xsd:element name="category">
+      <xsd:complexType>
+         <xsd:attribute name="id" type="xsd:string" use="required"/>
+         <xsd:attribute name="name" type="xsd:string" use="required"/>
+         <xsd:attribute name="parentCategory" type="xsd:string"/>
+      </xsd:complexType>
+   	</xsd:element>
+ 
+   	<xsd:element name="viewlet-entry">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="description" minOccurs="0" maxOccurs="1"/>
+            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+               <element ref="preference"/>
+            </xsd:sequence>
+         </xsd:sequence>
+         <xsd:attribute name="viewlet-id" type="xsd:string" use="required"/>
+         <xsd:attribute name="icon" type="xsd:string"/>
+         <xsd:attribute name="category" type="xsd:string"/>
+         <xsd:attribute name="title" type="xsd:string"/>
+         <xsd:attribute name="preview" type="xsd:string"/>
+         <xsd:attribute name="trim" default="blue">
+             <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:enumeration value="gray"/>
+                  <xsd:enumeration value="gold"/>
+                  <xsd:enumeration value="green"/>
+                  <xsd:enumeration value="teal"/>
+                  <xsd:enumeration value="blue"/>
+                  <xsd:enumeration value="purple"/>
+                  <xsd:enumeration value="orange"/>
+                  <xsd:enumeration value="none"/>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:attribute>
+		 <xsd:attribute name="background" type="xsd:boolean"/>
+      </xsd:complexType>
+   	</xsd:element>
+
+   	<xsd:element name="preference">
+      <xsd:complexType>
+         <xsd:attribute name="id" type="xsd:string" use="required"/>
+         <xsd:attribute name="value" type="xsd:string" use="required"/>
+      </xsd:complexType>
+   	</xsd:element>
+
+   	<xsd:element name="description" type="xsd:string"/>
+
+  	<xsd:complexType name="entriesDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+       			<xsd:choice minOccurs="1" maxOccurs="unbounded">
+          			<xsd:element ref="viewlet-entry"/>
+          			<xsd:element ref="category"/>
+       			</xsd:choice>
+	   			<xsd:attribute fixed="com.ibm.team.dashboard.configuration.entries" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+   	</xsd:complexType>
+
+	<xsd:element name="configuration-data" substitutionGroup="process:configuration-data" type="entriesDataType"/>	
+</xsd:schema>

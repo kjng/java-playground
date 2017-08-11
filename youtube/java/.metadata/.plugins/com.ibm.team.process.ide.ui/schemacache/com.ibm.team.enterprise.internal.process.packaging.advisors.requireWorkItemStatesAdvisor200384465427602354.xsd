@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://com.ibm.team.enterprise.process/requiredWorkItemStates"
+   targetNamespace="http://com.ibm.team.enterprise.process/requiredWorkItemStates"
+   xmlns:process="http://com.ibm.team.process"
+   attributeFormDefault="unqualified" elementFormDefault="qualified">
+   
+   <xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+   
+   <xsd:complexType name="requiredWorkItemStates">
+      <xsd:complexContent>
+         <xsd:restriction base="process:preconditionType">
+            <xsd:sequence> 
+               <xsd:element name="requireWorkItemStates" maxOccurs="1" minOccurs="0">
+                  <xsd:complexType>
+					<xsd:sequence>
+					   <xsd:element name="buildDefinition" maxOccurs="unbounded" minOccurs="0">
+					      <xsd:complexType>
+					         <xsd:sequence>
+					             <xsd:element name="category" maxOccurs="unbounded" minOccurs="0">
+					                <xsd:complexType>
+					                   <xsd:sequence>
+					                      <xsd:element name="type" maxOccurs="1" minOccurs="0">
+					                         <xsd:complexType>
+					                            <xsd:sequence>
+					                               <xsd:element name="state" maxOccurs="unbounded" minOccurs="0">
+					                                  <xsd:complexType>
+					                                     <xsd:attribute name="IMemento.internal.id" type="xsd:string" use="required"/>
+					                                     <xsd:attribute name="label" type="xsd:string" use="required"/>
+					                                  </xsd:complexType>
+					                               </xsd:element>   
+					                            </xsd:sequence>
+					                            <xsd:attribute name="IMemento.internal.id" type="xsd:string" use="required"/>
+					                         </xsd:complexType>
+					                      </xsd:element>
+					                   </xsd:sequence>
+					                   <xsd:attribute name="IMemento.internal.id" type="xsd:string" use="required"/>
+					                </xsd:complexType>
+					             </xsd:element>					         					             
+					         </xsd:sequence>
+					         <xsd:attribute name="default" type="xsd:string" use="optional"/>
+					         <xsd:attribute name="uuid" type="xsd:string" use="optional"/>
+					      </xsd:complexType>   
+					   </xsd:element>
+					</xsd:sequence>
+			      </xsd:complexType>		
+               </xsd:element> 
+            </xsd:sequence>
+            
+            <xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.enterprise.internal.process.promotion.advisors.requireWorkItemStatesAdvisor"/>
+         </xsd:restriction>
+      </xsd:complexContent>
+   </xsd:complexType>
+   
+   <xsd:element name="precondition" substitutionGroup="process:precondition" type="requiredWorkItemStates"/>
+</xsd:schema>

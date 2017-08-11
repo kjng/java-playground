@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://com.ibm.team.reports/setUpProject" xmlns:process="http://com.ibm.team.process" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.reports/setUpProject">
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	<xsd:complexType name="setUpProjectType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:followupActionType">
+				<xsd:sequence maxOccurs="1" minOccurs="0">
+					<xsd:choice>
+						<xsd:element ref="reports"/>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.reports.service.setUpProject" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="reports">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+				<xsd:element name="report">
+					<xsd:complexType>
+						<xsd:sequence maxOccurs="1" minOccurs="0">
+							<xsd:element name="resources">
+								<xsd:complexType>
+									<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+										<xsd:element name="resource">
+											<xsd:complexType>
+												<xsd:attribute name="plugin" type="xsd:string" use="optional"/>
+												<xsd:attribute name="resource" type="xsd:string" use="required"/>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="name" type="xsd:string" use="required"/>
+						<xsd:attribute name="id" type="xsd:string" use="required"/>
+						<xsd:attribute name="description" type="xsd:string" use="required"/>
+						<xsd:attribute name="plugin" type="xsd:string" use="optional"/>
+						<xsd:attribute name="file" type="xsd:string" use="required"/>
+						<xsd:attribute name="folder" type="xsd:string" use="optional"/>
+						<xsd:attribute name="isDefault" type="xsd:boolean" use="optional"/>
+						<xsd:attribute name="aptChart" type="xsd:boolean" use="optional"/>
+						<xsd:attribute name="noCaching" type="xsd:boolean" use="optional"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="followup-action" substitutionGroup="process:followup-action" type="setUpProjectType"/>
+</xsd:schema>

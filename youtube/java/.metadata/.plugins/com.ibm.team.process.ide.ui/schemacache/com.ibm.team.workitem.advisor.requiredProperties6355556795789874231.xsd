@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.team.workitem/requiredProperties" xmlns:process="http://com.ibm.team.process" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.workitem/requiredProperties">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="requiredPropertiesType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="properties">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element maxOccurs="unbounded" minOccurs="0" name="property">
+										<xsd:complexType>
+											<xsd:attribute name="id" type="xsd:string" use="required"/>
+										</xsd:complexType>
+									</xsd:element>
+	              						</xsd:sequence>
+								<xsd:attribute name="workItemType" type="xsd:string" use="optional"/>
+								<xsd:attribute name="workItemTypeCategory" type="xsd:string" use="optional"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="workflowProperties">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element maxOccurs="unbounded" minOccurs="0" name="property">
+										<xsd:complexType>
+											<xsd:attribute name="id" type="xsd:string" use="required"/>
+										</xsd:complexType>
+									</xsd:element>
+	              				</xsd:sequence>
+	              				<xsd:attribute name="stateId" type="xsd:string" use="required"/>
+	              				<xsd:attribute name="resolutionId" type="xsd:string" use="optional"/>
+								<xsd:attribute name="workItemType" type="xsd:string" use="optional"/>
+								<xsd:attribute name="workItemTypeCategory" type="xsd:string" use="optional"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>	
+				</xsd:sequence>
+				<xsd:attribute fixed="com.ibm.team.workitem.advisor.requiredProperties" name="id" type="xsd:string" use="required"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="requiredPropertiesType"/>
+</xsd:schema>

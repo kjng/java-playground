@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.workitem/readOnlyAttributes"
+	targetNamespace="http://com.ibm.team.workitem/readOnlyAttributes"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="readOnlyAttributesType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">
+				<xsd:sequence>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="readOnlyAttributes" maxOccurs="unbounded" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="attribute" maxOccurs="unbounded" minOccurs="0">
+										<xsd:complexType>
+											<xsd:attribute name="id" type="xsd:string" use="required"/>
+										</xsd:complexType>
+									</xsd:element>
+	              						</xsd:sequence>
+								<xsd:attribute name="ruleId" type="xsd:string" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>	
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.workitem.advisor.readOnlyAttributes"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="readOnlyAttributesType"/>
+</xsd:schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://com.ibm.team.process/server/requireWorkItem"
+	targetNamespace="http://com.ibm.team.process/server/protectClosedChangeSets"
+	xmlns:process="http://com.ibm.team.process"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+	
+	<xsd:complexType name="protectCloseChangeSetsType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:preconditionType">				
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.scm.server.protectClosedChangeSetsAdvisor"/>
+			</xsd:restriction> 
+		</xsd:complexContent>
+	</xsd:complexType>	
+	
+	<xsd:element name="precondition" substitutionGroup="process:precondition" type="protectCloseChangeSetsType"/>
+</xsd:schema>

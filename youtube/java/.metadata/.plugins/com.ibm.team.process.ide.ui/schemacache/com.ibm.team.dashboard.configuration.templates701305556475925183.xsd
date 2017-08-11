@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://com.ibm.team.dashboard/templates" xmlns:process="http://com.ibm.team.process" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.ibm.team.dashboard/templates">
+	
+	<xsd:import namespace="http://com.ibm.team.process" schemaLocation="platform:/plugin/com.ibm.team.process.common/schema/ProcessSettings.xsd"/>
+
+	<xsd:complexType name="templatesDataType">
+		<xsd:complexContent>
+			<xsd:restriction base="process:configurationDataType">
+				<xsd:sequence>
+					<xsd:element ref="dashboard-template" minOccurs="1" maxOccurs="unbounded"/>
+				</xsd:sequence>
+				<xsd:attribute name="id" type="xsd:string" use="required" fixed="com.ibm.team.dashboard.configuration.templates"/>
+			</xsd:restriction>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="configuration-data" type="templatesDataType" substitutionGroup="process:configuration-data"/>
+	
+	<xsd:element name="dashboard-template">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="unbounded" ref="page"/>
+			</xsd:sequence>
+			<xsd:attribute name="title" type="xsd:string" use="required"/>
+			<xsd:attribute name="type" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="project"/>
+						<xsd:enumeration value="team"/>
+						<xsd:enumeration value="contributor"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="id" type="xsd:string"/>
+			<xsd:attribute name="name" type="xsd:string"/>			
+		 </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="page">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="3" ref="column"/>
+			</xsd:sequence>
+			<xsd:attribute name="title" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="column">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="viewlet"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="viewlet">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" maxOccurs="unbounded" ref="preference"/>
+				<xsd:element minOccurs="0" maxOccurs="1" ref="memento"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:string" use="required"/>
+			<xsd:attribute name="background" type="xsd:boolean"/>				
+			<xsd:attribute name="icon" type="xsd:string"/>
+			<xsd:attribute name="title" type="xsd:string"/>
+			<xsd:attribute name="trim" default="blue">
+				 <xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="gray"/>
+						<xsd:enumeration value="gold"/>
+						<xsd:enumeration value="green"/>
+						<xsd:enumeration value="teal"/>
+						<xsd:enumeration value="blue"/>
+						<xsd:enumeration value="purple"/>
+						<xsd:enumeration value="orange"/>
+						<xsd:enumeration value="none"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>	 
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="preference">
+		<xsd:complexType>
+			<xsd:attribute name="id" type="xsd:string" use="required"/>
+			<xsd:attribute name="value" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="memento">
+		<xsd:complexType>
+			<xsd:choice minOccurs="1" maxOccurs="unbounded">
+				<xsd:element ref="property"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="property">
+		<xsd:complexType mixed="true">
+			<xsd:choice minOccurs="0" maxOccurs="1">
+				<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="memento"/>
+				</xsd:sequence>
+				<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+					<xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+				<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="property"/>
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+			<xsd:attribute name="type" default="xsd:string">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="xsd:string"/>
+						<xsd:enumeration value="int"/>
+						<xsd:enumeration value="xsd:boolean"/>
+						<xsd:enumeration value="double"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>	
+	
+</xsd:schema>

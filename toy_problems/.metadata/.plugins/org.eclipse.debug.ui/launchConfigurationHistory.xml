@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><launchHistory>
 <launchGroup id="org.eclipse.debug.ui.launchGroup.profile">
 <mruHistory>
+<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;Helpers&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;CountAllTheSheepOnFarm&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;LarioAndMuigiPipeProblem&quot;/&gt;"/>
 </mruHistory>
@@ -28,6 +29,7 @@
 </launchGroup>
 <launchGroup id="org.eclipse.debug.ui.launchGroup.debug">
 <mruHistory>
+<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;Helpers&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;CountAllTheSheepOnFarm&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;LarioAndMuigiPipeProblem&quot;/&gt;"/>
 </mruHistory>
@@ -35,6 +37,7 @@
 </launchGroup>
 <launchGroup id="org.eclipse.debug.ui.launchGroup.run">
 <mruHistory>
+<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;Helpers&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;CountAllTheSheepOnFarm&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;LarioAndMuigiPipeProblem&quot;/&gt;"/>
 </mruHistory>

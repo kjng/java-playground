@@ -1,3 +1,0 @@
-INDEX VERSION 1.127+C:\Users\sfk1j\Desktop\java_programs\toy_problems\.metadata\.plugins\org.eclipse.jdt.core
-2859696308.index
-3104359904.index

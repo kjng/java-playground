@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class SimpleDotComGame {
   public static void main (String[] args) {
     int numOfGuesses = 0;
-    GameHelper helper = new GameHelper();
+    SimpleGameHelper helper = new SimpleGameHelper();
     SimpleDotCom game = new SimpleDotCom();
     int randomNum = (int) (Math.random() * 5);
     ArrayList<String> locations = new ArrayList<String>();

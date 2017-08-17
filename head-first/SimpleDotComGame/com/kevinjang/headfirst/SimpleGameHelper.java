@@ -2,7 +2,7 @@ package com.kevinjang.headfirst;
 
 import java.io.*;
 
-public class GameHelper {
+public class SimpleGameHelper {
   public String getUserInput(String promptText) {
     String inputLine = null;
     System.out.print(promptText);

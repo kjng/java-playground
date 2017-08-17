@@ -1,3 +1,5 @@
+package com.kevinjang.headfirst;
+
 import java.io.*;
 
 public class GameHelper {

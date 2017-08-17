@@ -1,5 +1,7 @@
 package com.kevinjang.headfirst;
 
+import java.util.ArrayList;
+
 public class DotComBust {
 	
 	// declare and initialize the variables we'll need

@@ -11,6 +11,10 @@ public class DotCom {
 		this.locationCells = loc;
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	public void setName(String n) {
 		this.name = n;
 	}

@@ -1,2 +1,5 @@
 # Eclipse metadata
 **/.metadata
+
+# Eclipse temp files
+RemoteSystemsTempFiles/

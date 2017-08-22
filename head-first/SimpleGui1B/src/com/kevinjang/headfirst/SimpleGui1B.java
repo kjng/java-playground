@@ -1,11 +1,9 @@
 package com.kevinjang.headfirst;
 
 import javax.swing.*;
-import java.awt.event.*;
+import com.kevinjang.headfirst.MyDrawPanel;
 
-public class SimpleGui1B implements ActionListener {
-	private JButton button;
-	private boolean buttonToggle = false;
+public class SimpleGui1B {
 	
 	public static void main(String[] args) {
 		
@@ -17,29 +15,12 @@ public class SimpleGui1B implements ActionListener {
 	private void go() {
 		
 		JFrame frame = new JFrame();
-		button = new JButton("Click me");
-
-		button.addActionListener(this);
 		
-		frame.getContentPane().add(button);
+		frame.getContentPane().add(new MyDrawPanel());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(300, 300);
 		frame.setVisible(true);
 		
 	}
 	
-	public void actionPerformed(ActionEvent event) {
-		
-		if (buttonToggle == false) {
-			button.setText("You clicked me! :D");			
-		} else {
-			button.setText("You clicked me! :P");
-		}
-		
-		buttonToggle = !buttonToggle;
-		
-	}
-	
-	
-
 }
